@@ -10,21 +10,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #f8fafc;
+      --bg-primary: #faf8ff;
       --bg-card: #ffffff;
-      --bg-subtle: #f1f5f9;
-      --text-primary: #0f172a;
+      --bg-subtle: #f3effb;
+      --bg-teal-subtle: #f0fdfa;
+      --text-primary: #1e1b4b;
       --text-secondary: #334155;
       --text-muted: #475569;
-      --accent-primary: #0f4c81;
-      --accent-hover: #0b3559;
-      --accent-badge: #e0f2fe;
-      --accent-badge-text: #075985;
-      --link-color: #0369a1;
-      --border-color: #cbd5e1;
+      --accent-primary: #0f766e;
+      --accent-hover: #115e59;
+      --accent-lavender: #7e22ce;
+      --accent-badge: #ccfbf1;
+      --accent-badge-text: #115e59;
+      --lavender-badge: #f3e8ff;
+      --lavender-badge-text: #5b21b6;
+      --lavender-border: #d8b4fe;
+      --teal-border: #99f6e4;
+      --link-color: #0f766e;
+      --border-color: #dcd7fe;
       --border-width: 1px;
-      --focus-ring: #0284c7;
-      --code-bg: #0f172a;
+      --focus-ring: #7e22ce;
+      --code-bg: #1e1b4b;
       --code-text: #f8fafc;
       --font-scale: 1;
     }
@@ -133,7 +139,40 @@
     .theme-badge {
       background-color: var(--accent-badge);
       color: var(--accent-badge-text);
-      border: var(--border-width) solid var(--border-color);
+      border: var(--border-width) solid var(--teal-border, var(--border-color));
+    }
+
+    .theme-badge-lavender {
+      background-color: var(--lavender-badge);
+      color: var(--lavender-badge-text);
+      border: var(--border-width) solid var(--lavender-border, var(--border-color));
+    }
+
+    .hero-accent-banner {
+      background: linear-gradient(135deg, rgba(243, 232, 255, 0.65) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(204, 251, 241, 0.65) 100%);
+      border-top: 4px solid var(--accent-primary);
+    }
+
+    .card-accent-teal {
+      border-top: 3px solid var(--accent-primary);
+    }
+
+    .card-accent-lavender {
+      border-top: 3px solid var(--accent-lavender);
+    }
+
+    body.high-contrast .theme-badge,
+    body.high-contrast .theme-badge-lavender {
+      background-color: #000000;
+      color: #FFFF00;
+      border: 2px solid #FFFFFF;
+    }
+
+    body.high-contrast .hero-accent-banner,
+    body.high-contrast .card-accent-teal,
+    body.high-contrast .card-accent-lavender {
+      background: #0a0a0a !important;
+      border-top: 2px solid #FFFFFF !important;
     }
 
     .nav-tab[aria-selected="true"] {
@@ -235,12 +274,12 @@
          ========================================================= -->
     <section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" class="space-y-8">
       <!-- Hero Banner -->
-      <div class="theme-card p-6 sm:p-8 shadow-sm">
+      <div class="theme-card hero-accent-banner p-6 sm:p-8 shadow-sm">
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div class="space-y-3 max-w-3xl">
             <div class="inline-flex flex-wrap items-center gap-2">
               <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge">B.S. Computer Science • Minor in UX (UAH '28)</span>
-              <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge">APH Monarch RISE Participant</span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge-lavender">APH Monarch RISE Participant</span>
               <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge">WCAG 2.1 AA Accessible Portfolio</span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold theme-heading tracking-tight">
@@ -262,31 +301,52 @@
             </div>
           </div>
 
-          <!-- Repository Tree Summary Card -->
-          <div class="theme-subtle p-4 rounded-xl lg:w-96 shrink-0">
+          <!-- Accessible Semantic Repository Tree Summary Card -->
+          <nav aria-label="GitHub Repository Directory Structure" class="theme-subtle p-4 rounded-xl lg:w-96 shrink-0">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider theme-heading">GitHub Repository Layout</span>
-              <span class="text-xs font-mono theme-badge px-2 py-0.5 rounded">plansonec/portfolio</span>
+              <h3 class="text-xs font-bold uppercase tracking-wider theme-heading">GitHub Repository Layout</h3>
+              <span class="text-xs font-mono theme-badge-lavender px-2 py-0.5 rounded">plansonec/portfolio</span>
             </div>
-            <pre class="text-xs font-mono leading-relaxed overflow-x-auto p-3 rounded-lg code-block">emma-planson-portfolio/
-├── README.md
-├── index.html              # Live Web App
-├── docs/index.html         # GitHub Pages
-├── board-game-database-java/
-│   ├── build.gradle &amp; gradlew
-│   ├── src/main/java/org/example/
-│   ├── src/main/resources/ # XML + CSS
-│   └── src/test/java/      # 8 Test Suites
-├── cpu-scheduler-cpp/
-│   ├── Makefile &amp; README.md
-│   ├── ArrayList / LinkedList
-│   ├── BSTMultimap / Iterator
-│   └── schedulesim &amp; 5 Tests
-└── arm-assembly-cs413/
-    ├── lab2_stack_calculator/
-    ├── lab3_coffee_maker_fsm/
-    └── reference/          # Accessible Card</pre>
-          </div>
+            <div class="p-3 rounded-lg code-block text-xs font-mono">
+              <p class="font-bold mb-1.5" style="color: var(--code-text);">
+                <span aria-hidden="true">📁 </span>emma-planson-portfolio/ <span class="sr-only">(Root directory)</span>
+              </p>
+              <ul class="space-y-1.5 pl-3 border-l-2" style="border-color: var(--lavender-border, #ffffff);" role="list">
+                <li>
+                  <span aria-hidden="true">📄 </span><code>README.md</code> <span class="opacity-80">— Root documentation</span>
+                </li>
+                <li>
+                  <span aria-hidden="true">🌐 </span><code>docs/index.html</code> <span class="opacity-80">— GitHub Pages web app</span>
+                </li>
+                <li>
+                  <span class="font-semibold"><span aria-hidden="true">📂 </span>board-game-database-java/</span>
+                  <ul class="pl-3 mt-1 space-y-0.5 border-l opacity-95" style="border-color: var(--teal-border, #ffffff);" role="list" aria-label="board-game-database-java contents">
+                    <li><code>build.gradle</code> &amp; <code>gradlew</code></li>
+                    <li><code>src/main/java/org/example/</code> <span class="opacity-80">(MVC classes)</span></li>
+                    <li><code>src/main/resources/</code> <span class="opacity-80">(XML &amp; CSS)</span></li>
+                    <li><code>src/test/java/</code> <span class="opacity-80">(8 JUnit/Tester suites)</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="font-semibold"><span aria-hidden="true">📂 </span>cpu-scheduler-cpp/</span>
+                  <ul class="pl-3 mt-1 space-y-0.5 border-l opacity-95" style="border-color: var(--teal-border, #ffffff);" role="list" aria-label="cpu-scheduler-cpp contents">
+                    <li><code>Makefile</code> &amp; <code>README.md</code></li>
+                    <li><code>ArrayList</code> &amp; <code>LinkedList</code> <span class="opacity-80">(.hpp/.tpp)</span></li>
+                    <li><code>BSTMultimap</code> &amp; <code>BSTForwardIterator</code></li>
+                    <li><code>schedulesim.cpp</code> &amp; 5 unit test suites</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="font-semibold"><span aria-hidden="true">📂 </span>arm-assembly-cs413/</span>
+                  <ul class="pl-3 mt-1 space-y-0.5 border-l opacity-95" style="border-color: var(--teal-border, #ffffff);" role="list" aria-label="arm-assembly-cs413 contents">
+                    <li><code>Makefile</code> &amp; <code>README.md</code></li>
+                    <li><code>lab2_stack_calculator/lab2.s</code></li>
+                    <li><code>lab3_coffee_maker_fsm/lab3.s</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
       </div>
 
@@ -308,7 +368,7 @@
 
         <div id="project-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Card 1: Board Game Database -->
-          <article class="project-card theme-card p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="java web">
+          <article class="project-card theme-card card-accent-teal p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="java web">
             <div class="space-y-3">
               <div class="flex items-start justify-between gap-2">
                 <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/board-game-database-java</span>
@@ -337,7 +397,7 @@
           </article>
 
           <!-- Card 2: C++ CPU Process Scheduler -->
-          <article class="project-card theme-card p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="cpp">
+          <article class="project-card theme-card card-accent-lavender p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="cpp">
             <div class="space-y-3">
               <div class="flex items-start justify-between gap-2">
                 <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/cpu-scheduler-cpp</span>
@@ -366,27 +426,27 @@
           </article>
 
           <!-- Card 3: ARMv4 Assembly Suite -->
-          <article class="project-card theme-card p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="arm">
+          <article class="project-card theme-card card-accent-teal p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="arm">
             <div class="space-y-3">
               <div class="flex items-start justify-between gap-2">
                 <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/arm-assembly-cs413</span>
                 <span class="text-xs font-semibold theme-muted">CS 413 • Fall 2026</span>
               </div>
-              <h4 class="text-lg font-bold theme-heading">32-bit ARMv4 Assembly Systems Suite &amp; Accessible Guide</h4>
+              <h4 class="text-lg font-bold theme-heading">32-bit ARMv4 Assembly Systems Suite (<code>lab2.s</code> &amp; <code>lab3.s</code>)</h4>
               <p class="text-sm leading-relaxed">
-                Developed 32-bit ARMv4 assembly programs demonstrating hardware stack parameter passing with caller/callee register isolation (<code>lab2.s</code> Four-Function Stack Calculator with 64-bit <code>SMULL</code>/<code>ADDS</code> overflow detection and repeated-subtraction division) and an embedded <code>48 oz</code> Coffee Maker Finite State Machine (<code>lab3.s</code>), paired with a screen-reader accessible ARMv4 Reference Card.
+                Developed 32-bit ARMv4 assembly programs demonstrating hardware stack parameter passing with caller/callee register isolation (<code>lab2.s</code> Four-Function Stack Calculator with 64-bit <code>SMULL</code>/<code>ADDS</code> overflow detection and repeated-subtraction division) and an embedded <code>48 oz</code> Coffee Maker Finite State Machine (<code>lab3.s</code>) with AAPCS stack-aligned telemetry.
               </p>
               <div class="flex flex-wrap gap-1.5 pt-1">
                 <span class="text-xs px-2 py-0.5 rounded theme-subtle">32-bit ARMv4 Assembly</span>
                 <span class="text-xs px-2 py-0.5 rounded theme-subtle">Hardware Stack Frames</span>
                 <span class="text-xs px-2 py-0.5 rounded theme-subtle">SMULL / CPSR Overflow</span>
                 <span class="text-xs px-2 py-0.5 rounded theme-subtle">Finite State Machine</span>
-                <span class="text-xs px-2 py-0.5 rounded theme-subtle">Screen-Reader Reference</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">AAPCS Register Isolation</span>
               </div>
             </div>
             <div class="flex flex-wrap gap-2 pt-3 border-t" style="border-color: var(--border-color);">
               <button type="button" class="open-tab-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-target="arm">
-                Open ARMv4 Lab Simulator &amp; Reference →
+                Open ARMv4 Lab Simulators →
               </button>
               <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="arm-lab2">
                 Inspect lab2.s &amp; lab3.s Source
@@ -395,7 +455,7 @@
           </article>
 
           <!-- Card 4: Front-End Web & Accessibility Engineering -->
-          <article class="project-card theme-card p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="web">
+          <article class="project-card theme-card card-accent-lavender p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="web">
             <div class="space-y-3">
               <div class="flex items-start justify-between gap-2">
                 <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">index.html / docs/</span>
@@ -634,18 +694,18 @@
          PANEL 4: ARMV4 ASSEMBLY SUITE & ACCESSIBLE REFERENCE
          ========================================================= -->
     <section id="panel-arm" role="tabpanel" aria-labelledby="tab-arm" class="hidden space-y-6">
-      <div class="theme-card p-6 shadow-sm space-y-3">
+      <div class="theme-card card-accent-teal p-6 shadow-sm space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div>
             <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/arm-assembly-cs413</span>
-            <h2 class="text-2xl font-extrabold theme-heading mt-1">32-bit ARMv4 Assembly Suite &amp; Screen-Reader Reference</h2>
+            <h2 class="text-2xl font-extrabold theme-heading mt-1">32-bit ARMv4 Assembly Systems Suite (CS 413)</h2>
           </div>
           <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="arm-lab2">
             View Full lab2.s &amp; lab3.s Assembly Code
           </button>
         </div>
         <p class="text-sm leading-relaxed">
-          Explore interactive simulations of my two CS 413 ARMv4 assembly labs—<strong>Lab 2 (<code>lab2.s</code> Stack-Based Four-Function Calculator)</strong> and <strong>Lab 3 (<code>lab3.s</code> 48 oz Coffee Maker Finite State Machine)</strong>—followed by an interactive lookup table for my <strong>Screen-Reader Accessible ARMv4 Reference Card</strong>.
+          Explore interactive simulations of my two CS 413 ARMv4 assembly programs—<strong>Lab 2 (<code>lab2.s</code> Stack-Based Four-Function Calculator)</strong> and <strong>Lab 3 (<code>lab3.s</code> 48 oz Coffee Maker Finite State Machine)</strong>—followed by a breakdown of the subroutines, stack frames, and register isolation conventions implemented in my code.
         </p>
       </div>
 
@@ -748,23 +808,22 @@ Insert K-cup and select a cup size (S=6oz, M=8oz, L=10oz) or press 'H' for hidde
         </div>
       </div>
 
-      <!-- Accessible ARMv4 Reference Explorer -->
-      <div class="theme-card p-6 shadow-sm space-y-4">
+      <!-- Lab 2 & Lab 3 Subroutine & Register Architecture Inspector -->
+      <div class="theme-card card-accent-lavender p-6 shadow-sm space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 class="text-lg font-bold theme-heading">Interactive ARMv4 Accessible Reference Explorer</h3>
-            <p class="text-xs theme-muted">Search mnemonics, CPSR condition codes, barrel shifter ops, and registers from my Accessible ARM Reference Card.</p>
+            <h3 class="text-lg font-bold theme-heading"><code>lab2.s</code> &amp; <code>lab3.s</code> Subroutine &amp; Register Architecture</h3>
+            <p class="text-xs theme-muted">Filter the subroutines, hardware stack protocols, and register allocations implemented across my CS 413 assembly programs.</p>
           </div>
           <div class="flex flex-wrap gap-2">
-            <input id="arm-ref-search" type="search" placeholder="Search MOV, SMULL, EQ, LSL, R14..."
-              aria-label="Search ARMv4 instructions and condition codes"
+            <input id="arm-ref-search" type="search" placeholder="Search add_func, SMULL, r10, show_hidden..."
+              aria-label="Search lab2.s and lab3.s subroutines and registers"
               class="px-3 py-1.5 rounded-lg text-xs sm:text-sm theme-subtle" />
-            <select id="arm-ref-cat" aria-label="Filter ARM reference by category" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm theme-subtle">
-              <option value="all">All Categories (26)</option>
-              <option value="Data Processing">Data Processing &amp; Multiply</option>
-              <option value="Branch & Memory">Branch &amp; Memory Transfer</option>
-              <option value="Condition Code">CPSR Condition Codes ({cd})</option>
-              <option value="Shifter & Registers">Barrel Shifter &amp; Registers</option>
+            <select id="arm-ref-cat" aria-label="Filter assembly components by lab" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm theme-subtle">
+              <option value="all">All Lab Components (12)</option>
+              <option value="Lab 2 (lab2.s)">Lab 2: Stack Calculator (lab2.s)</option>
+              <option value="Lab 3 (lab3.s)">Lab 3: Coffee Maker FSM (lab3.s)</option>
+              <option value="Register Protocol">Register &amp; Stack Protocol</option>
             </select>
           </div>
         </div>
@@ -773,10 +832,10 @@ Insert K-cup and select a cup size (S=6oz, M=8oz, L=10oz) or press 'H' for hidde
           <table class="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
               <tr class="border-b-2" style="border-color: var(--border-color);">
-                <th class="py-2 pr-3 font-bold theme-heading">Syntax / Code</th>
-                <th class="py-2 px-3 font-bold theme-heading">Category</th>
-                <th class="py-2 px-3 font-bold theme-heading">Name</th>
-                <th class="py-2 pl-3 font-bold theme-heading">Operation &amp; Screen-Reader Description</th>
+                <th scope="col" class="py-2 pr-3 font-bold theme-heading">Subroutine / Register</th>
+                <th scope="col" class="py-2 px-3 font-bold theme-heading">Program</th>
+                <th scope="col" class="py-2 px-3 font-bold theme-heading">Role</th>
+                <th scope="col" class="py-2 pl-3 font-bold theme-heading">Implementation Details in My Code</th>
               </tr>
             </thead>
             <tbody id="arm-ref-tbody" class="divide-y" style="border-color: var(--border-color);"></tbody>
@@ -1442,29 +1501,20 @@ Insert K-cup and select a cup size (S=6oz, M=8oz, L=10oz) or press 'H' for hidde
         updateCoffeeUI('[main_loop] Reservoir refilled to 48 oz and counters reset to 0. Ready to brew!');
       });
 
-      // Accessible ARMv4 Reference Data
+      // Emma Planson's lab2.s & lab3.s Subroutine & Register Architecture Data
       const ARM_REF_ITEMS = [
-        { syntax: 'MOV{cd}{S} reg, arg', cat: 'Data Processing', name: 'Move', desc: 'Copies 32-bit value of arg into destination register reg (reg = arg).' },
-        { syntax: 'MVN{cd}{S} reg, arg', cat: 'Data Processing', name: 'Move Negative (NOT)', desc: 'Inverts every bit of arg (one\'s complement) and copies into reg (reg = NOT arg).' },
-        { syntax: 'AND / ORR / EOR / BIC', cat: 'Data Processing', name: 'Bitwise Logic', desc: 'Performs 32-bit bitwise AND, inclusive OR, exclusive XOR, or Bit Clear (reg_a AND NOT arg_b).' },
-        { syntax: 'ADD{cd}{S} reg_d, reg_a, arg', cat: 'Data Processing', name: 'Add', desc: 'Adds reg_a + arg into reg_d. With S suffix (ADDS), updates N, Z, C, and signed overflow V flag.' },
-        { syntax: 'SUB / RSB reg_d, reg_a, arg', cat: 'Data Processing', name: 'Subtract / Reverse Subtract', desc: 'Computes reg_a - arg (SUB) or arg - reg_a (RSB). C=1 indicates no borrow occurred.' },
-        { syntax: 'CMP / CMN / TST / TEQ', cat: 'Data Processing', name: 'Compare & Test', desc: 'Updates CPSR flags (N, Z, C, V) via subtraction (CMP), addition (CMN), bitwise AND (TST), or XOR (TEQ).' },
-        { syntax: 'MUL / MLA', cat: 'Data Processing', name: '32-bit Multiply / Accumulate', desc: 'Places lower 32 bits of (reg_a * reg_b) or (reg_a * reg_b + reg_c) into reg_d.' },
-        { syntax: 'SMULL / UMULL reg_l, reg_u, reg_a, reg_b', cat: 'Data Processing', name: '64-bit Multiply Long', desc: 'Multiplies signed (SMULL) or unsigned (UMULL) 32-bit registers into 64-bit pair {reg_u, reg_l}. Used in lab2.s for overflow detection.' },
-        { syntax: 'B{cd} / BL{cd} / BX reg', cat: 'Branch & Memory', name: 'Branch / Branch with Link', desc: 'Jumps to target label (B), saves return address PC+4 in LR (BL), or returns/switches Thumb state (BX lr).' },
-        { syntax: 'LDR{cd}{B} / STR{cd}{B} reg, mem', cat: 'Branch & Memory', name: 'Single Register Load / Store', desc: 'Transfers 32-bit word or zero-extended 8-bit byte ({B}) between register and memory address [mem].' },
-        { syntax: 'LDM{cd}{um} / STM{cd}{um} reg!, {list}', cat: 'Branch & Memory', name: 'Block Register Transfer (POP/PUSH)', desc: 'Loads or stores multiple registers. STMFD SP! (PUSH) and LDMFD SP! (POP) manage the Full Descending stack.' },
-        { syntax: 'SWP{cd}{B} reg_d, reg_m, [reg_n]', cat: 'Branch & Memory', name: 'Atomic Swap', desc: 'Atomically reads [reg_n] into reg_d and writes reg_m to [reg_n] for mutex synchronization.' },
-        { syntax: 'EQ / NE', cat: 'Condition Code', name: 'Equal / Not Equal', desc: 'Tests Zero flag: EQ executes if Z==1 (operands equal); NE executes if Z==0 (operands different).' },
-        { syntax: 'CS (HS) / CC (LO)', cat: 'Condition Code', name: 'Carry Set / Carry Clear', desc: 'Tests Carry flag: HS executes if C==1 (unsigned >=); LO executes if C==0 (unsigned <).' },
-        { syntax: 'VS / VC', cat: 'Condition Code', name: 'Overflow Set / Clear', desc: 'Tests Signed Overflow flag: VS if V==1; VC if V==0 (used as BVC add_no_ovf in lab2.s).' },
-        { syntax: 'GE / LT / GT / LE', cat: 'Condition Code', name: 'Signed Comparisons', desc: 'Signed relational branches: GE (N==V), LT (N!=V), GT (Z==0 & N==V), LE (Z==1 | N!=V).' },
-        { syntax: 'HI / LS / MI / PL', cat: 'Condition Code', name: 'Unsigned & Sign Tests', desc: 'HI (C==1 & Z==0, unsigned >), LS (C==0 | Z==1, unsigned <=), MI (N==1, negative), PL (N==0, positive/zero).' },
-        { syntax: 'LSL / LSR / ASR / ROR / RRX', cat: 'Shifter & Registers', name: 'Barrel Shifter Operations', desc: 'Zero-cycle inline shifts on Operand 2: Logical Left (LSL), Logical Right (LSR), Arithmetic Right (ASR), Rotate Right (ROR/RRX).' },
-        { syntax: 'R0–R3 (a1–a4)', cat: 'Shifter & Registers', name: 'Argument & Scratch Registers', desc: 'Caller-saved registers passing first 4 function arguments and returning scalar result in R0.' },
-        { syntax: 'R4–R11 (v1–v8)', cat: 'Shifter & Registers', name: 'Callee-Saved Variable Registers', desc: 'Preserved across subroutine calls. In lab2.s, main uses r4–r8 while subroutines isolate operands in r10–r11.' },
-        { syntax: 'R12 (IP) / R13 (SP) / R14 (LR) / R15 (PC)', cat: 'Shifter & Registers', name: 'Special Architectural Registers', desc: 'R12 = Intra-Procedure Scratch; R13 = Stack Pointer (SP); R14 = Link Register (LR); R15 = Program Counter (PC).' }
+        { syntax: 'add_func (POP {r10,r11})', cat: 'Lab 2 (lab2.s)', name: 'Signed Addition with Overflow Trap', desc: 'Pops caller operands into isolated registers r10 and r11, executes ADDS r12, r10, r11, checks CPSR V flag via BVC add_no_ovf, sets r0=1 on overflow, and pushes sum onto the hardware stack.' },
+        { syntax: 'sub_func (POP {r10,r11})', cat: 'Lab 2 (lab2.s)', name: 'Stack-Passed Subtraction', desc: 'Pops operands from hardware stack into r10 and r11, computes SUB r10, r10, r11, pushes difference onto the stack, and returns via BX lr.' },
+        { syntax: 'mul_func (SMULL r2, r12, r10, r11)', cat: 'Lab 2 (lab2.s)', name: '64-bit Multiply Overflow Check', desc: 'Uses 64-bit Signed Multiply Long (SMULL) into {r12, r2} and checks if upper 32 bits (r12 != 0) or sign bit of r2 (< 0) overflowed 32-bit signed bounds.' },
+        { syntax: 'div_func & div_subtract_loop', cat: 'Lab 2 (lab2.s)', name: 'Iterative Subtraction Division', desc: 'Implements integer division without hardware divide by repeatedly subtracting divisor (r11) from dividend (r10), incrementing quotient (r12), and pushing both quotient and remainder (PUSH {r10, r11}).' },
+        { syntax: 'clear_input_buffer', cat: 'Lab 2 (lab2.s)', name: 'Stdin Stream Sanitizer', desc: 'Calls BL getchar in a loop until newline (#10) or EOF (#-1) to recover cleanly when scanf encounters non-integer user input.' },
+        { syntax: 'r4–r8 vs. r10–r11', cat: 'Register Protocol', name: 'Caller / Callee Register Isolation', desc: 'In lab2.s, main stores validated inputs and menu state in r4–r8 and pushes {r4, r5} onto the stack; subroutines pop exclusively into r10–r11 to guarantee register isolation.' },
+        { syntax: 'prompt_cup_size & check_water', cat: 'Lab 3 (lab3.s)', name: 'Cup Size Dispatch & Reservoir Guard', desc: 'Routes S/1 (6 oz, =cnt_S), M/2 (8 oz, =cnt_M), and L/3 (10 oz, =cnt_L) into r6 and r5, then compares water_res (r7) against r6 before allowing brewing.' },
+        { syntax: 'dispense_coffee & refill_shutdown', cat: 'Lab 3 (lab3.s)', name: 'Brewing Deduction & Auto-Shutdown', desc: 'Subtracts brewed ounces (r6) from water_res, increments the size counter [r5], and branches to refill_shutdown when water_res drops below 6 oz.' },
+        { syntax: 'show_hidden (Code "H" / "h")', cat: 'Lab 3 (lab3.s)', name: 'Hidden Inventory Telemetry', desc: 'Secret diagnostic routine callable from any menu prompt; loads water_res, cnt_S, cnt_M, and cnt_L and prints all four metrics in a single printf call.' },
+        { syntax: 'flush_input', cat: 'Lab 3 (lab3.s)', name: 'Line Buffer Flush Subroutine', desc: 'Consumes trailing characters up to "\\n" (#10) or EOF (#-1) after each single-character scanf read to prevent stray characters from triggering menu branches.' },
+        { syntax: 'sub sp, sp, #8 / str r4, [sp]', cat: 'Register Protocol', name: '8-Byte AAPCS Stack Alignment', desc: 'Used in lab2.s (call_div) and lab3.s (show_hidden) to pass the 5th printf argument on the hardware stack while maintaining 8-byte stack pointer alignment.' },
+        { syntax: 'water_res / cnt_S / cnt_M / cnt_L', cat: 'Lab 3 (lab3.s)', name: '.data Section State Words', desc: '32-bit .word variables in the .data segment tracking the 48 oz water reservoir and cumulative cup counts across state machine transitions.' }
       ];
 
       const armSearch = document.getElementById('arm-ref-search');
