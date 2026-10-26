@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" onKeyPressed="#handleLogin2" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.org.example.views.LoginView">
+   <content>
+      
+      <BorderPane id="login-background">
+         
+         <center>
+            <VBox alignment="CENTER" maxWidth="450.0" spacing="20.0" styleClass="login-card" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="40.0" top="40.0" /> 
+               </BorderPane.margin>
+               <children>
+                  
+                  <Label alignment="CENTER" text="APP NAME" wrapText="true">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="invalidLabel" text="Invalid username or password" visible="false" />
+                  
+                  <TextField fx:id="usernameField" accessibleRoleDescription="Text Input" accessibleText="Username" maxWidth="300.0" promptText="Username" />
+                  
+                  <PasswordField fx:id="passwordField" accessibleRoleDescription="Secure Text Input" accessibleText="Password" maxWidth="300.0" promptText="Password" />
+                  
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label text="No account?" wrapText="true" />
+                        <Hyperlink fx:id="loginAsGuest" onAction="#guestLogin" text="Log in as a guest" wrapText="true" />
+                     </children>
+                  </HBox>
+                  
+                  <Button id="login-button" mnemonicParsing="false" onAction="#handleLogin" prefHeight="35.0" prefWidth="200.0" text="Log In" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  
+               </children>
+            </VBox>
+         </center>
+         
+         <top>
+            <Button mnemonicParsing="false" onAction="#openSettings" prefWidth="100.0" text="Settings" wrapText="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="15.0" />
+               </BorderPane.margin>
+            </Button>
+         </top>
+         
+      </BorderPane>
+      
+   </content>
+</ScrollPane>

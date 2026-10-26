@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserDB>
+    <User>
+        <name>user</name>
+        <userID>1001</userID>
+        <password>password</password>
+        <AllWishlists>
+        </AllWishlists>
+    </User>
+</UserDB>

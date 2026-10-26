@@ -1,0 +1,245 @@
+/* highContrast.css */
+.root {
+    -fx-background-color: #000000;
+}
+
+.label,
+.text,
+.check-box {
+    -fx-text-fill: #FFFF00;
+    /* Bright Yellow */
+    -fx-font-weight: bold;
+}
+
+.button,
+.text-field,
+.password-field {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+}
+
+.button:hover,
+.button:focused {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+}
+
+.hyperlink {
+    -fx-text-fill: #00FFFF;
+    /* Cyan */
+}
+
+/* --------------------------------------
+   Accessibility navigation banner
+--------------------------------------- */
+.root .menu-banner {
+    -fx-background-color: #000000;
+    -fx-padding: 0 5 0 5;
+    -fx-spacing: 2;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 0 0 1 0;
+}
+
+.root .menu-banner-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFF00;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 6 12 6 12;
+}
+
+.root .menu-banner-button:hover,
+.root .menu-banner-button:focused {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+    -fx-cursor: hand;
+}
+
+/* Change color when the Filter button is pressed down */
+.root .toggle-button:selected {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+}
+
+.root .scroll-pane,
+.root .scroll-pane .viewport,
+.root .scroll-pane .content {
+    -fx-background-color: #000000;
+    -fx-background: #000000;
+    /* This specifically targets the internal JavaFX viewport color */
+}
+
+.root .scroll-bar:vertical,
+.root .scroll-bar:horizontal,
+.root .scroll-bar .thumb {
+    -fx-background-color: #333333;
+    -fx-border-color: #FFFFFF;
+}
+
+/* --------------------------------------
+   Game Cards
+--------------------------------------- */
+/* The outer box of the game card */
+.root .game-card {
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-background-color: #111111;
+}
+
+/* The placeholder for the game image */
+.root .game-image-placeholder {
+    -fx-background-color: #333333;
+    -fx-border-color: #FFFF00;
+    -fx-border-width: 1px;
+}
+
+/* The Game Title */
+.root .game-card-title {
+    -fx-text-fill: #FFFF00;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Favorite Button */
+.root .fav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-border-color: transparent;
+    -fx-padding: 0 5 0 5;
+    -fx-cursor: hand;
+}
+
+.root .fav-button:selected {
+    -fx-text-fill: #FF0000;
+    -fx-background-color: #FFFF00;
+    -fx-background-radius: 20px;
+}
+
+.root .fav-button:hover,
+.root .fav-button:focused {
+    -fx-background-color: #555555;
+    -fx-background-radius: 20px;
+}
+
+/* --------------------------------------
+   LOGIN SCREEN HIGH CONTRAST OVERRIDES
+--------------------------------------- */
+
+/* 1. Kill the gradient and make the background solid black */
+#login-background {
+    -fx-background-color: #000000;
+}
+
+/* 2. Turn the white card black, add a sharp white border, and remove the shadow */
+.login-card {
+    -fx-background-color: #000000;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-effect: none;
+    /* Drop shadows look muddy in high contrast */
+}
+
+/* 3. Turn the blue button into a high-visibility yellow-on-black button */
+#login-button {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFF00;
+    /* Yellow is an industry standard for high contrast readability */
+    -fx-border-color: #FFFF00;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+/* 4. Invert the button colors when the user hovers over it */
+#login-button:hover,
+#login-button:focused {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+}
+
+/* --------------------------------------
+   LIST VIEW STYLING 
+--------------------------------------- */
+.root .list-view {
+    -fx-background-color: #000000;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+}
+
+.root .list-cell {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFF00;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+}
+
+.root .list-cell:selected {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+}
+
+.root .list-cell:hover {
+    -fx-background-color: #555555;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+}
+
+/* --------------------------------------
+   COMBOBOX (DROPDOWN) STYLING 
+--------------------------------------- */
+
+.root .combo-box {
+    -fx-background-color: #000000;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+}
+
+.root .combo-box>.list-cell {
+    -fx-text-fill: #FFFF00;
+    -fx-font-weight: bold;
+}
+
+.root .combo-box .arrow-button {
+    -fx-background-color: #000000;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 0 0 0 2px;
+}
+
+.root .combo-box .arrow {
+    -fx-background-color: #FFFF00;
+}
+
+.root .combo-box-popup .list-view {
+    -fx-background-color: #000000;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+}
+
+.root .combo-box-popup .list-cell {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFF00;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+}
+
+.root .combo-box-popup .list-cell:hover,
+.root .combo-box-popup .list-cell:selected {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+    -fx-cursor: hand;
+}
+
+/* --------------------------------------
+   TEXT SHAPE STYLING 
+--------------------------------------- */
+.root Text {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 14px;
+}

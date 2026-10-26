@@ -1,0 +1,117 @@
+.label {
+    -fx-text-fill: black;
+}
+
+/* --------------------------------------
+   STANDARD NAVIGATION BANNER 
+--------------------------------------- */
+.menu-banner {
+    -fx-background-color: #F4F4F4; 
+    -fx-padding: 0 5 0 5;
+    -fx-spacing: 2;
+    -fx-border-color: #D1D1D1;
+    -fx-border-width: 0 0 1 0; 
+}
+
+.menu-banner-button {
+    -fx-background-color: transparent; 
+    -fx-text-fill: #000000;
+    -fx-font-size: 13px; /* Standard OS menu font size */
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 4 10 4 10;
+}
+
+.menu-banner-button:hover,
+.menu-banner-button:focused {
+    -fx-background-color: #0058D0; 
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+}
+
+/* How the SELECTED navigation button looks! */
+.active-menu-button {
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent #0058D0 transparent;
+    -fx-border-width: 0 0 3 0; /* A modern blue underline instead of a gray box */
+}
+
+/* --------------------------------------
+   STANDARD GAME CARDS
+--------------------------------------- */
+/* The outer box of the game card */
+.game-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0; /* Very light gray border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+/* Placeholder image square (until the real images load) */
+.game-image-placeholder {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: #D1D1D1;
+    -fx-border-width: 1px;
+}
+
+/* Game Title */
+.game-card-title {
+    -fx-text-fill: #222222; /* Dark gray */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Favorite Button */
+.fav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #CCCCCC;
+    -fx-font-size: 16px;
+    -fx-border-color: transparent;
+    -fx-padding: 0 5 0 5;
+    -fx-cursor: hand;
+}
+
+.fav-button:selected {
+    -fx-text-fill: #E63946; /* Pops to red when selected */
+}
+
+.fav-button:hover,
+.fav-button:focused {
+    -fx-background-color: #F0F0F0; 
+    -fx-background-radius: 20px;
+}
+
+/* --------------------------------------
+   LOGIN SCREEN ENHANCEMENTS
+--------------------------------------- */
+/* 1. The Background Gradient */
+#login-background {
+    /* A nice, modern diagonal gradient from dark blue to soft teal */
+    -fx-background-color: linear-gradient(to bottom right, #1a2a6c, #11998e);
+}
+
+/* 2. The Login Card (The white box holding the text fields) */
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15px; 
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 5); 
+}
+
+/* 3. The Blue Login Button */
+#login-button {
+    -fx-background-color: #0078D7; 
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 20px;
+    -fx-cursor: hand; 
+}
+
+#login-button:hover {
+    -fx-background-color: #005A9E; 
+}

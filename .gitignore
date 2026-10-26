@@ -1,0 +1,34 @@
+# Compiled Java & Gradle
+*.class
+*.jar
+*.war
+*.ear
+.gradle/
+build/
+bin/
+out/
+.idea/
+*.iml
+
+# Compiled C++ & ARM Assembly Binaries
+*.o
+*.obj
+*.exe
+*.out
+schedulesim
+ArrayList_TEST
+LinkedList_TEST
+BSTMultimap_TEST
+RoundRobin_TEST
+CompletelyFair_TEST
+lab2
+lab3
+
+# Runtime / User-Generated Files
+userWishlists.xml
+
+# OS Metadata
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db

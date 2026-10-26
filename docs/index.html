@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma Planson | Software Engineering &amp; Accessibility Portfolio</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #faf8ff;
+      --bg-card: #ffffff;
+      --bg-subtle: #f3effb;
+      --bg-teal-subtle: #f0fdfa;
+      --text-primary: #1e1b4b;
+      --text-secondary: #334155;
+      --text-muted: #475569;
+      --accent-primary: #0f766e;
+      --accent-hover: #115e59;
+      --accent-lavender: #7e22ce;
+      --accent-badge: #ccfbf1;
+      --accent-badge-text: #115e59;
+      --lavender-badge: #f3e8ff;
+      --lavender-badge-text: #5b21b6;
+      --lavender-border: #d8b4fe;
+      --teal-border: #99f6e4;
+      --link-color: #0f766e;
+      --border-color: #dcd7fe;
+      --border-width: 1px;
+      --focus-ring: #7e22ce;
+      --code-bg: #1e1b4b;
+      --code-text: #f8fafc;
+      --font-scale: 1;
+    }
+
+    /* Ported directly from Emma Planson's CS 321 highContrast.css (#000000 bg, #FFFF00 headings/labels, #00FFFF links, 2px #FFFFFF borders) */
+    body.high-contrast {
+      --bg-primary: #000000;
+      --bg-card: #0a0a0a;
+      --bg-subtle: #141414;
+      --text-primary: #FFFF00;
+      --text-secondary: #FFFFFF;
+      --text-muted: #E2E8F0;
+      --accent-primary: #FFFF00;
+      --accent-hover: #FFFFFF;
+      --accent-badge: #000000;
+      --accent-badge-text: #FFFF00;
+      --link-color: #00FFFF;
+      --border-color: #FFFFFF;
+      --border-width: 2px;
+      --focus-ring: #FFFF00;
+      --code-bg: #000000;
+      --code-text: #FFFF00;
+    }
+
+    html {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: calc(16px * var(--font-scale));
+      scroll-behavior: smooth;
+    }
+
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-secondary);
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .theme-card {
+      background-color: var(--bg-card);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: 0.75rem;
+    }
+
+    body.high-contrast .theme-card {
+      box-shadow: none !important;
+    }
+
+    .theme-subtle {
+      background-color: var(--bg-subtle);
+      border: var(--border-width) solid var(--border-color);
+    }
+
+    .theme-heading {
+      color: var(--text-primary);
+    }
+
+    .theme-muted {
+      color: var(--text-muted);
+    }
+
+    .theme-link {
+      color: var(--link-color);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .theme-btn-primary {
+      background-color: var(--accent-primary);
+      color: #ffffff;
+      border: 2px solid transparent;
+      font-weight: 600;
+    }
+    .theme-btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+    body.high-contrast .theme-btn-primary {
+      background-color: #000000;
+      color: #FFFF00;
+      border: 2px solid #FFFF00;
+    }
+    body.high-contrast .theme-btn-primary:hover,
+    body.high-contrast .theme-btn-primary:focus-visible {
+      background-color: #FFFF00;
+      color: #000000;
+    }
+
+    .theme-btn-secondary {
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      border: var(--border-width) solid var(--border-color);
+      font-weight: 600;
+    }
+    .theme-btn-secondary:hover {
+      background-color: var(--bg-subtle);
+    }
+    body.high-contrast .theme-btn-secondary:hover,
+    body.high-contrast .theme-btn-secondary:focus-visible {
+      background-color: #FFFF00;
+      color: #000000;
+      border-color: #FFFF00;
+    }
+
+    .theme-badge {
+      background-color: var(--accent-badge);
+      color: var(--accent-badge-text);
+      border: var(--border-width) solid var(--teal-border, var(--border-color));
+    }
+
+    .theme-badge-lavender {
+      background-color: var(--lavender-badge);
+      color: var(--lavender-badge-text);
+      border: var(--border-width) solid var(--lavender-border, var(--border-color));
+    }
+
+    .hero-accent-banner {
+      background: linear-gradient(135deg, rgba(243, 232, 255, 0.65) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(204, 251, 241, 0.65) 100%);
+      border-top: 4px solid var(--accent-primary);
+    }
+
+    .card-accent-teal {
+      border-top: 3px solid var(--accent-primary);
+    }
+
+    .card-accent-lavender {
+      border-top: 3px solid var(--accent-lavender);
+    }
+
+    body.high-contrast .theme-badge,
+    body.high-contrast .theme-badge-lavender {
+      background-color: #000000;
+      color: #FFFF00;
+      border: 2px solid #FFFFFF;
+    }
+
+    body.high-contrast .hero-accent-banner,
+    body.high-contrast .card-accent-teal,
+    body.high-contrast .card-accent-lavender {
+      background: #0a0a0a !important;
+      border-top: 2px solid #FFFFFF !important;
+    }
+
+    .nav-tab[aria-selected="true"] {
+      border-bottom: 3px solid var(--accent-primary);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    body.high-contrast .nav-tab[aria-selected="true"] {
+      background-color: #FFFF00;
+      color: #000000;
+      border-bottom: 3px solid #FFFFFF;
+    }
+
+    *:focus-visible {
+      outline: 3px solid var(--focus-ring) !important;
+      outline-offset: 2px !important;
+    }
+
+    .code-block {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      border: 2px solid var(--border-color);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Screen Reader Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg theme-btn-primary">
+    Skip to main content
+  </a>
+
+  <!-- Live ARIA Region for Screen Reader Announcements -->
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Top Accessibility & Navigation Header -->
+  <header class="sticky top-0 z-40 theme-card rounded-none border-t-0 border-x-0 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between py-3 gap-3">
+        <!-- Brand Identity -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg theme-btn-primary" aria-hidden="true">
+            EP
+          </div>
+          <div>
+            <h1 class="text-lg font-extrabold tracking-tight theme-heading leading-tight">Emma Planson</h1>
+            <p class="text-xs theme-muted">CS &amp; UX @ UAH • Software &amp; Accessibility Engineering</p>
+          </div>
+        </div>
+
+        <!-- Accessibility Toolbar (Ported from Session.java & SettingsViewController.java) -->
+        <div class="flex flex-wrap items-center gap-2" role="region" aria-label="Accessibility and Display Controls">
+          <button id="btn-contrast-toggle" type="button" aria-pressed="false"
+            class="px-3 py-1.5 rounded-lg text-xs sm:text-sm theme-btn-secondary flex items-center gap-1.5 transition"
+            title="Toggle High-Contrast Yellow-on-Black Theme (Ported from CS 321 highContrast.css)">
+            <span aria-hidden="true">◐</span>
+            <span id="contrast-label">High Contrast: Off</span>
+          </button>
+
+          <div class="flex items-center rounded-lg overflow-hidden border" style="border-color: var(--border-color);" role="group" aria-label="Text Size Scaling">
+            <button id="btn-font-dec" type="button" class="px-2.5 py-1.5 text-xs theme-btn-secondary border-0" aria-label="Standard text size (100%)">A</button>
+            <button id="btn-font-mid" type="button" class="px-2.5 py-1.5 text-xs theme-btn-secondary border-0 font-bold" aria-label="Medium text size (112%)">A+</button>
+            <button id="btn-font-inc" type="button" class="px-2.5 py-1.5 text-xs theme-btn-secondary border-0 font-extrabold" aria-label="Large text size (125%)">A++</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main View Navigation Tabs -->
+      <nav aria-label="Portfolio Sections" class="flex overflow-x-auto gap-1 pt-1 border-t" style="border-color: var(--border-color);" role="tablist">
+        <button type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" data-tab="overview"
+          class="nav-tab px-3.5 py-2.5 text-xs sm:text-sm whitespace-nowrap rounded-t-md transition">
+          1. Overview &amp; Repo Structure
+        </button>
+        <button type="button" role="tab" id="tab-boardgame" aria-selected="false" aria-controls="panel-boardgame" data-tab="boardgame"
+          class="nav-tab px-3.5 py-2.5 text-xs sm:text-sm whitespace-nowrap rounded-t-md transition">
+          2. Board Game XML App (Java + JS Demo)
+        </button>
+        <button type="button" role="tab" id="tab-scheduler" aria-selected="false" aria-controls="panel-scheduler" data-tab="scheduler"
+          class="nav-tab px-3.5 py-2.5 text-xs sm:text-sm whitespace-nowrap rounded-t-md transition">
+          3. CPU Scheduler &amp; BST (C++17 + Sim)
+        </button>
+        <button type="button" role="tab" id="tab-arm" aria-selected="false" aria-controls="panel-arm" data-tab="arm"
+          class="nav-tab px-3.5 py-2.5 text-xs sm:text-sm whitespace-nowrap rounded-t-md transition">
+          4. ARMv4 Assembly Suite (CS 413 + Sim)
+        </button>
+        <button type="button" role="tab" id="tab-resume" aria-selected="false" aria-controls="panel-resume" data-tab="resume"
+          class="nav-tab px-3.5 py-2.5 text-xs sm:text-sm whitespace-nowrap rounded-t-md transition">
+          5. Experience &amp; Contact
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+    <!-- =========================================================
+         PANEL 1: OVERVIEW & REPOSITORY ARCHITECTURE
+         ========================================================= -->
+    <section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" class="space-y-8">
+      <!-- Hero Banner -->
+      <div class="theme-card hero-accent-banner p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div class="space-y-3 max-w-3xl">
+            <div class="inline-flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge">B.S. Computer Science • Minor in UX (UAH '28)</span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge-lavender">APH Monarch RISE Participant</span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold theme-badge">WCAG 2.1 AA Accessible Portfolio</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold theme-heading tracking-tight">
+              Systems Software, Object-Oriented Architecture &amp; Accessible Front-End Engineering
+            </h2>
+            <p class="text-sm sm:text-base leading-relaxed">
+              Hi, I'm <strong>Emma Planson</strong> (`@plansonec`). I build maintainable software across the stack—from <strong>32-bit ARMv4 assembly</strong> routines and <strong>C++17 template data structures</strong> to <strong>Java/JavaFX MVC desktop applications</strong> and <strong>accessible HTML5/CSS3/ES6 web interfaces</strong>. Every interactive tool on this page is written in vanilla ES6 JavaScript and CSS custom properties to provide live browser demonstrations of the projects in my GitHub repository.
+            </p>
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <button type="button" id="hero-btn-boardgame" class="px-4 py-2 rounded-lg text-sm theme-btn-primary">
+                Launch Board Game XML Web Demo →
+              </button>
+              <button type="button" id="hero-btn-scheduler" class="px-4 py-2 rounded-lg text-sm theme-btn-secondary">
+                Explore C++ CPU Scheduler Benchmarks
+              </button>
+              <button type="button" id="hero-btn-arm" class="px-4 py-2 rounded-lg text-sm theme-btn-secondary">
+                Run ARMv4 Assembly Simulator
+              </button>
+            </div>
+          </div>
+
+          <!-- Accessible Semantic Repository Tree Summary Card -->
+          <nav aria-label="GitHub Repository Directory Structure" class="theme-subtle p-4 rounded-xl lg:w-96 shrink-0">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xs font-bold uppercase tracking-wider theme-heading">GitHub Repository Layout</h3>
+              <span class="text-xs font-mono theme-badge-lavender px-2 py-0.5 rounded">plansonec/portfolio</span>
+            </div>
+            <div class="p-3 rounded-lg code-block text-xs font-mono">
+              <p class="font-bold mb-1.5" style="color: var(--code-text);">
+                <span aria-hidden="true">📁 </span>emma-planson-portfolio/ <span class="sr-only">(Root directory)</span>
+              </p>
+              <ul class="space-y-1.5 pl-3 border-l-2" style="border-color: var(--lavender-border, #ffffff);" role="list">
+                <li>
+                  <span aria-hidden="true">📄 </span><code>README.md</code> <span class="opacity-80">— Root documentation</span>
+                </li>
+                <li>
+                  <span aria-hidden="true">🌐 </span><code>docs/index.html</code> <span class="opacity-80">— GitHub Pages web app</span>
+                </li>
+                <li>
+                  <span class="font-semibold"><span aria-hidden="true">📂 </span>board-game-database-java/</span>
+                  <ul class="pl-3 mt-1 space-y-0.5 border-l opacity-95" style="border-color: var(--teal-border, #ffffff);" role="list" aria-label="board-game-database-java contents">
+                    <li><code>build.gradle</code> &amp; <code>gradlew</code></li>
+                    <li><code>src/main/java/org/example/</code> <span class="opacity-80">(MVC classes)</span></li>
+                    <li><code>src/main/resources/</code> <span class="opacity-80">(XML &amp; CSS)</span></li>
+                    <li><code>src/test/java/</code> <span class="opacity-80">(8 JUnit/Tester suites)</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="font-semibold"><span aria-hidden="true">📂 </span>cpu-scheduler-cpp/</span>
+                  <ul class="pl-3 mt-1 space-y-0.5 border-l opacity-95" style="border-color: var(--teal-border, #ffffff);" role="list" aria-label="cpu-scheduler-cpp contents">
+                    <li><code>Makefile</code> &amp; <code>README.md</code></li>
+                    <li><code>ArrayList</code> &amp; <code>LinkedList</code> <span class="opacity-80">(.hpp/.tpp)</span></li>
+                    <li><code>BSTMultimap</code> &amp; <code>BSTForwardIterator</code></li>
+                    <li><code>schedulesim.cpp</code> &amp; 5 unit test suites</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="font-semibold"><span aria-hidden="true">📂 </span>arm-assembly-cs413/</span>
+                  <ul class="pl-3 mt-1 space-y-0.5 border-l opacity-95" style="border-color: var(--teal-border, #ffffff);" role="list" aria-label="arm-assembly-cs413 contents">
+                    <li><code>Makefile</code> &amp; <code>README.md</code></li>
+                    <li><code>lab2_stack_calculator/lab2.s</code></li>
+                    <li><code>lab3_coffee_maker_fsm/lab3.s</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Filterable Project Showcase Cards -->
+      <div class="space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xl font-bold theme-heading">Featured Engineering Projects</h3>
+            <p class="text-xs sm:text-sm theme-muted">Filter by language or click any project to inspect source code and launch its interactive browser demo.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter projects by technology">
+            <button type="button" class="proj-filter-btn px-3 py-1.5 rounded-lg text-xs theme-btn-primary" data-filter="all">All (4)</button>
+            <button type="button" class="proj-filter-btn px-3 py-1.5 rounded-lg text-xs theme-btn-secondary" data-filter="java">Java / XML / CSS</button>
+            <button type="button" class="proj-filter-btn px-3 py-1.5 rounded-lg text-xs theme-btn-secondary" data-filter="cpp">C++17 / OS</button>
+            <button type="button" class="proj-filter-btn px-3 py-1.5 rounded-lg text-xs theme-btn-secondary" data-filter="arm">ARMv4 Assembly</button>
+            <button type="button" class="proj-filter-btn px-3 py-1.5 rounded-lg text-xs theme-btn-secondary" data-filter="web">HTML5 / CSS3 / JS</button>
+          </div>
+        </div>
+
+        <div id="project-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card 1: Board Game Database -->
+          <article class="project-card theme-card card-accent-teal p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="java web">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/board-game-database-java</span>
+                <span class="text-xs font-semibold theme-muted">CS 321 • Spring 2026</span>
+              </div>
+              <h4 class="text-lg font-bold theme-heading">Board Game Database &amp; Accessible Search App</h4>
+              <p class="text-sm leading-relaxed">
+                Architected a Java 21 &amp; JavaFX desktop application using the <strong>MVC</strong> and <strong>Singleton</strong> patterns to parse a 90-game BoardGameGeek XML catalog (<code>bgg90Games.xml</code>). Engineered <code>GameParser.java</code>, <code>UserParser.java</code>, <code>Session.java</code>, and a full <strong>High-Contrast Accessibility Mode (<code>highContrast.css</code>)</strong> with persistent font scaling and 8 automated unit test suites.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">Java 21</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">JavaFX FXML &amp; CSS</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">DOM XML Parser</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">MVC &amp; Singleton</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">WCAG High-Contrast</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t" style="border-color: var(--border-color);">
+              <button type="button" class="open-tab-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-target="boardgame">
+                Try Live JS Catalog Demo &amp; View Code →
+              </button>
+              <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="java-parser">
+                Inspect GameParser.java &amp; highContrast.css
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 2: C++ CPU Process Scheduler -->
+          <article class="project-card theme-card card-accent-lavender p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="cpp">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/cpu-scheduler-cpp</span>
+                <span class="text-xs font-semibold theme-muted">CS 221 • Fall 2025</span>
+              </div>
+              <h4 class="text-lg font-bold theme-heading">CPU Process Scheduler &amp; Custom Template Data Structures</h4>
+              <p class="text-sm leading-relaxed">
+                Built a discrete-event OS CPU scheduler simulator (<code>schedulesim</code>) in C++17 backed by custom generic containers: <code>ArrayList&lt;T&gt;</code>, <code>LinkedList&lt;T&gt;</code>, <code>BSTMultimap&lt;K,V&gt;</code>, and <code>BSTForwardIterator&lt;K,V&gt;</code>. Benchmarked <strong>Round Robin</strong>, <strong>Fast Round Robin</strong>, and <strong>Completely Fair (CFS)</strong> scheduling across CPU-bound and I/O-bound processes, cutting I/O wait time by <strong>37.6%</strong>.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">C++17 Templates</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">BSTMultimap &amp; Iterators</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">OS Process Scheduling</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">std::chrono Benchmarks</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">5 Unit Test Suites</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t" style="border-color: var(--border-color);">
+              <button type="button" class="open-tab-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-target="scheduler">
+                Launch C++ Benchmark &amp; Queue Simulator →
+              </button>
+              <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="cpp-cfs">
+                Inspect Scheduler.cpp &amp; BSTMultimap
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3: ARMv4 Assembly Suite -->
+          <article class="project-card theme-card card-accent-teal p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="arm">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/arm-assembly-cs413</span>
+                <span class="text-xs font-semibold theme-muted">CS 413 • Fall 2026</span>
+              </div>
+              <h4 class="text-lg font-bold theme-heading">32-bit ARMv4 Assembly Systems Suite (<code>lab2.s</code> &amp; <code>lab3.s</code>)</h4>
+              <p class="text-sm leading-relaxed">
+                Developed 32-bit ARMv4 assembly programs demonstrating hardware stack parameter passing with caller/callee register isolation (<code>lab2.s</code> Four-Function Stack Calculator with 64-bit <code>SMULL</code>/<code>ADDS</code> overflow detection and repeated-subtraction division) and an embedded <code>48 oz</code> Coffee Maker Finite State Machine (<code>lab3.s</code>) with AAPCS stack-aligned telemetry.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">32-bit ARMv4 Assembly</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">Hardware Stack Frames</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">SMULL / CPSR Overflow</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">Finite State Machine</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">AAPCS Register Isolation</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t" style="border-color: var(--border-color);">
+              <button type="button" class="open-tab-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-target="arm">
+                Open ARMv4 Lab Simulators →
+              </button>
+              <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="arm-lab2">
+                Inspect lab2.s &amp; lab3.s Source
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 4: Front-End Web & Accessibility Engineering -->
+          <article class="project-card theme-card card-accent-lavender p-6 flex flex-col justify-between gap-4 shadow-sm" data-tags="web">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">index.html / docs/</span>
+                <span class="text-xs font-semibold theme-muted">Front-End &amp; UX Showcase</span>
+              </div>
+              <h4 class="text-lg font-bold theme-heading">Accessible Web Portfolio &amp; Client-Side Simulation Engine</h4>
+              <p class="text-sm leading-relaxed">
+                Engineered a zero-dependency, single-page interactive web application in <strong>semantic HTML5, CSS3 custom properties, and ES6 JavaScript</strong>. Features a live client-side port of the BoardGameGeek XML search/wishlist engine, interactive visualizations of C++ and ARMv4 coursework, ARIA live announcements (<code>aria-live="polite"</code>), keyboard-first navigation, and a live High-Contrast theme engine.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">Semantic HTML5 &amp; ARIA</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">CSS3 Custom Variables</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">Vanilla ES6 JavaScript</span>
+                <span class="text-xs px-2 py-0.5 rounded theme-subtle">WCAG 2.1 AA Compliance</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t" style="border-color: var(--border-color);">
+              <button type="button" id="card-btn-test-contrast" class="px-3.5 py-2 rounded-lg text-xs theme-btn-primary">
+                Toggle High-Contrast Theme Live
+              </button>
+              <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="web-a11y">
+                Inspect Web Accessibility Engine (JS/CSS)
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Technical Skills Matrix -->
+      <div class="theme-card p-6 shadow-sm space-y-4">
+        <h3 class="text-lg font-bold theme-heading">Technical Skills &amp; Coursework Matrix</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="theme-subtle p-4 rounded-lg space-y-1.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider theme-heading">Languages</h4>
+            <p class="text-xs sm:text-sm leading-relaxed">Java (21), C++ (17), Python, 32-bit ARMv4 Assembly, JavaScript (ES6+), HTML5, CSS3, Swift, XML</p>
+          </div>
+          <div class="theme-subtle p-4 rounded-lg space-y-1.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider theme-heading">Systems &amp; Tools</h4>
+            <p class="text-xs sm:text-sm leading-relaxed">Git &amp; GitHub, Linux / CLI (SSH, Bash), Gradle, GNU Make, GCC / G++ / GDB, JavaFX, VS Code</p>
+          </div>
+          <div class="theme-subtle p-4 rounded-lg space-y-1.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider theme-heading">Accessibility &amp; UX</h4>
+            <p class="text-xs sm:text-sm leading-relaxed">WCAG 2.1 AA Auditing, Screen-Reader Compatibility (NVDA/VoiceOver/JAWS), High-Contrast CSS, APH Monarch Braille/Tactile Device</p>
+          </div>
+          <div class="theme-subtle p-4 rounded-lg space-y-1.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider theme-heading">UAH CS Coursework</h4>
+            <p class="text-xs sm:text-sm leading-relaxed">Analysis &amp; Design of Algorithms (CS 417), Digital Computer Architecture (CS 413), OOP in Java (CS 321), Data Structures (CS 221), Human Factors (PY 403)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PANEL 2: BOARD GAME XML APP (JAVA + INTERACTIVE JS DEMO)
+         ========================================================= -->
+    <section id="panel-boardgame" role="tabpanel" aria-labelledby="tab-boardgame" class="hidden space-y-6">
+      <div class="theme-card p-6 shadow-sm space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/board-game-database-java</span>
+            <h2 class="text-2xl font-extrabold theme-heading mt-1">Board Game Database &amp; Search Application (Java/XML + Live JS Web Port)</h2>
+          </div>
+          <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="java-parser">
+            View GameParser.java &amp; Session.java Source
+          </button>
+        </div>
+        <p class="text-sm leading-relaxed">
+          Below is an interactive <strong>HTML5, CSS3, and ES6 JavaScript web port</strong> of our CS 321 JavaFX desktop application, powered by <strong>24 real board game records extracted directly from <code>src/main/resources/bgg90Games.xml</code></strong>. Test keyword search, player-count filtering, playtime bounds, sorting, and persistent Wishlist management—or click <em>High Contrast</em> in the top bar to see the web equivalent of my <code>highContrast.css</code> stylesheet in action.
+        </p>
+      </div>
+
+      <!-- Interactive Search & Filter Controls -->
+      <div class="theme-card p-5 shadow-sm space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div class="sm:col-span-2">
+            <label for="bgg-search-input" class="block text-xs font-bold uppercase tracking-wider theme-heading mb-1">
+              Search Title, Category, or Description
+            </label>
+            <input id="bgg-search-input" type="search" placeholder="e.g., Star Wars, Catan, Deck, Cooperative..."
+              class="w-full px-3 py-2 rounded-lg text-sm theme-subtle" />
+          </div>
+
+          <div>
+            <label for="bgg-player-filter" class="block text-xs font-bold uppercase tracking-wider theme-heading mb-1">
+              Player Count
+            </label>
+            <select id="bgg-player-filter" class="w-full px-3 py-2 rounded-lg text-sm theme-subtle">
+              <option value="all">Any Player Count</option>
+              <option value="1">Supports Solo (1 Player)</option>
+              <option value="2">Supports 2 Players</option>
+              <option value="4">Supports 4 Players</option>
+              <option value="5">Supports 5+ Players</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="bgg-time-filter" class="block text-xs font-bold uppercase tracking-wider theme-heading mb-1">
+              Max Play Time
+            </label>
+            <select id="bgg-time-filter" class="w-full px-3 py-2 rounded-lg text-sm theme-subtle">
+              <option value="all">Any Play Time</option>
+              <option value="30">Up to 30 mins</option>
+              <option value="45">Up to 45 mins</option>
+              <option value="60">Up to 60 mins</option>
+              <option value="120">Up to 120 mins</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="bgg-sort-select" class="block text-xs font-bold uppercase tracking-wider theme-heading mb-1">
+              Sort Catalog By
+            </label>
+            <select id="bgg-sort-select" class="w-full px-3 py-2 rounded-lg text-sm theme-subtle">
+              <option value="title">Title (A → Z)</option>
+              <option value="time-asc">Play Time (Shortest First)</option>
+              <option value="year-desc">Year Published (Newest First)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t" style="border-color: var(--border-color);">
+          <div class="flex items-center gap-2">
+            <button type="button" id="bgg-btn-all" class="px-3 py-1.5 rounded-lg text-xs theme-btn-primary">
+              All Catalog Games (<span id="bgg-count-matching">24</span>)
+            </button>
+            <button type="button" id="bgg-btn-wishlist" class="px-3 py-1.5 rounded-lg text-xs theme-btn-secondary">
+              ★ My XML Wishlist (<span id="bgg-count-wishlist">0</span>)
+            </button>
+            <button type="button" id="bgg-btn-reset" class="px-3 py-1.5 rounded-lg text-xs theme-btn-secondary">
+              Reset Filters
+            </button>
+          </div>
+          <p id="bgg-status-text" class="text-xs font-medium theme-muted">
+            Showing 24 of 24 games parsed from <code>bgg90Games.xml</code>
+          </p>
+        </div>
+      </div>
+
+      <!-- Board Game Cards Grid -->
+      <div id="bgg-games-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" aria-live="polite"></div>
+    </section>
+
+    <!-- =========================================================
+         PANEL 3: C++17 CPU PROCESS SCHEDULER & BST MULTIMAP
+         ========================================================= -->
+    <section id="panel-scheduler" role="tabpanel" aria-labelledby="tab-scheduler" class="hidden space-y-6">
+      <div class="theme-card p-6 shadow-sm space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/cpu-scheduler-cpp</span>
+            <h2 class="text-2xl font-extrabold theme-heading mt-1">CPU Process Scheduler Simulator &amp; Custom C++17 Data Structures</h2>
+          </div>
+          <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="cpp-cfs">
+            View Scheduler.cpp &amp; BSTMultimap Source
+          </button>
+        </div>
+        <p class="text-sm leading-relaxed">
+          Compares three OS CPU scheduling architectures implemented in <code>Planson_finalProject</code>: <strong>Round Robin (<code>ArrayList&lt;Process*&gt;</code>)</strong>, <strong>Fast Round Robin (<code>LinkedList&lt;Process*&gt;</code>)</strong>, and <strong>Completely Fair Scheduler (<code>BSTMultimap&lt;int, Process*&gt;</code>)</strong>. Use the controls below to inspect real <code>std::chrono</code> benchmark results from the compiled C++17 binary and step through a live process dispatch simulation.
+        </p>
+      </div>
+
+      <!-- Real C++17 Benchmark Explorer -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="theme-card p-6 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-bold theme-heading">Empirical C++17 Benchmark Results (100,000 Cycles)</h3>
+            <div class="flex gap-1.5" role="group" aria-label="Select benchmark workload">
+              <button type="button" id="bench-btn-20" class="px-3 py-1.5 rounded-lg text-xs theme-btn-primary">
+                20 Procs (10 CPU / 10 I/O)
+              </button>
+              <button type="button" id="bench-btn-200" class="px-3 py-1.5 rounded-lg text-xs theme-btn-secondary">
+                200 Procs (100 CPU / 100 I/O)
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b-2" style="border-color: var(--border-color);">
+                  <th class="py-2 pr-2 font-bold theme-heading">Scheduler &amp; Backing Store</th>
+                  <th class="py-2 px-2 font-bold theme-heading text-right">Overhead / Op</th>
+                  <th class="py-2 px-2 font-bold theme-heading text-right">CPU-Bound CPU</th>
+                  <th class="py-2 px-2 font-bold theme-heading text-right">I/O-Bound CPU</th>
+                  <th class="py-2 pl-2 font-bold theme-heading text-right">I/O Wait Time</th>
+                </tr>
+              </thead>
+              <tbody id="bench-table-body" class="divide-y" style="border-color: var(--border-color);"></tbody>
+            </table>
+          </div>
+
+          <div id="bench-insight-box" class="theme-subtle p-4 rounded-lg text-xs sm:text-sm leading-relaxed"></div>
+        </div>
+
+        <!-- Interactive Step-by-Step Process Dispatch Simulator -->
+        <div class="theme-card p-6 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="text-lg font-bold theme-heading">Interactive Process Dispatch Simulator</h3>
+              <p class="text-xs theme-muted">Step through 10-cycle time slices to observe how each structure orders processes.</p>
+            </div>
+            <select id="sim-sched-type" aria-label="Select scheduler algorithm" class="px-3 py-1.5 rounded-lg text-xs font-semibold theme-subtle">
+              <option value="cfs">CompletelyFair (BSTMultimap keyed by cpuTime)</option>
+              <option value="rr">FastRoundRobin (LinkedList FIFO Queue)</option>
+            </select>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 p-3 rounded-lg theme-subtle">
+            <div class="text-xs sm:text-sm font-mono">
+              Simulated Cycle: <strong id="sim-cycle-num" class="theme-heading">0</strong> |
+              Dispatches: <strong id="sim-dispatch-count" class="theme-heading">0</strong>
+            </div>
+            <div class="flex gap-2">
+              <button type="button" id="sim-btn-step" class="px-3 py-1.5 rounded-lg text-xs theme-btn-primary">
+                Step +1 Slice (10 Cycles)
+              </button>
+              <button type="button" id="sim-btn-auto" class="px-3 py-1.5 rounded-lg text-xs theme-btn-secondary">
+                Run 10 Slices
+              </button>
+              <button type="button" id="sim-btn-reset" class="px-3 py-1.5 rounded-lg text-xs theme-btn-secondary">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div id="sim-last-action" class="text-xs font-mono p-2.5 rounded code-block">
+            Ready: 2 CPU-Bound processes (P1, P2) and 2 I/O-Bound processes (P3, P4) initialized at cpuTime = 0.
+          </div>
+
+          <div id="sim-proc-list" class="space-y-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PANEL 4: ARMV4 ASSEMBLY SUITE & ACCESSIBLE REFERENCE
+         ========================================================= -->
+    <section id="panel-arm" role="tabpanel" aria-labelledby="tab-arm" class="hidden space-y-6">
+      <div class="theme-card card-accent-teal p-6 shadow-sm space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span class="text-xs font-mono px-2.5 py-1 rounded theme-badge">/arm-assembly-cs413</span>
+            <h2 class="text-2xl font-extrabold theme-heading mt-1">32-bit ARMv4 Assembly Systems Suite (CS 413)</h2>
+          </div>
+          <button type="button" class="open-code-modal-btn px-3.5 py-2 rounded-lg text-xs theme-btn-secondary" data-snippet="arm-lab2">
+            View Full lab2.s &amp; lab3.s Assembly Code
+          </button>
+        </div>
+        <p class="text-sm leading-relaxed">
+          Explore interactive simulations of my two CS 413 ARMv4 assembly programs—<strong>Lab 2 (<code>lab2.s</code> Stack-Based Four-Function Calculator)</strong> and <strong>Lab 3 (<code>lab3.s</code> 48 oz Coffee Maker Finite State Machine)</strong>—followed by a breakdown of the subroutines, stack frames, and register isolation conventions implemented in my code.
+        </p>
+      </div>
+
+      <!-- Interactive Simulators for Lab 2 and Lab 3 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Lab 2 Simulator: Stack Calculator -->
+        <div class="theme-card p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold theme-heading">Lab 2 Simulator: ARM Stack Calculator (<code>lab2.s</code>)</h3>
+            <span class="text-xs font-mono px-2 py-0.5 rounded theme-badge">PUSH {r4,r5} → POP {r10,r11}</span>
+          </div>
+          <p class="text-xs theme-muted">
+            Simulates <code>lab2.s</code> register isolation, 32-bit signed <code>ADDS</code>/<code>BVC</code> and 64-bit <code>SMULL</code> overflow traps, and iterative subtraction division (<code>div_subtract_loop</code>).
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label for="arm-calc-n1" class="block text-xs font-bold uppercase mb-1 theme-heading">Operand 1 (<code>r4</code>)</label>
+              <input id="arm-calc-n1" type="number" min="0" value="654" class="w-full px-3 py-2 rounded-lg text-sm font-mono theme-subtle" />
+            </div>
+            <div>
+              <label for="arm-calc-op" class="block text-xs font-bold uppercase mb-1 theme-heading">Operation (<code>r6</code>)</label>
+              <select id="arm-calc-op" class="w-full px-3 py-2 rounded-lg text-sm font-mono theme-subtle">
+                <option value="1">1: ADD (BL add_func)</option>
+                <option value="2">2: SUB (BL sub_func)</option>
+                <option value="3">3: MUL (BL mul_func)</option>
+                <option value="4" selected>4: DIV (BL div_func)</option>
+              </select>
+            </div>
+            <div>
+              <label for="arm-calc-n2" class="block text-xs font-bold uppercase mb-1 theme-heading">Operand 2 (<code>r5</code>)</label>
+              <input id="arm-calc-n2" type="number" min="0" value="45" class="w-full px-3 py-2 rounded-lg text-sm font-mono theme-subtle" />
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button type="button" id="arm-calc-run" class="px-4 py-2 rounded-lg text-xs theme-btn-primary">
+              Execute ARM Subroutine
+            </button>
+            <button type="button" id="arm-calc-preset-div" class="px-3 py-2 rounded-lg text-xs theme-btn-secondary">
+              Preset: 654 / 45 (Rubric Test)
+            </button>
+            <button type="button" id="arm-calc-preset-ovf" class="px-3 py-2 rounded-lg text-xs theme-btn-secondary">
+              Preset: 2,147,449,525 + 1,947,583,648 (Overflow)
+            </button>
+          </div>
+
+          <pre id="arm-calc-output" class="p-3.5 rounded-lg text-xs font-mono leading-relaxed overflow-x-auto code-block" aria-live="polite"></pre>
+        </div>
+
+        <!-- Lab 3 Simulator: Coffee Maker FSM -->
+        <div class="theme-card p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold theme-heading">Lab 3 Simulator: Coffee Maker FSM (<code>lab3.s</code>)</h3>
+            <span class="text-xs font-mono px-2 py-0.5 rounded theme-badge">water_res: .word 48</span>
+          </div>
+          <p class="text-xs theme-muted">
+            Simulates the <code>lab3.s</code> state machine: tracks the 48 oz reservoir, checks cup size availability, responds to secret code <code>H</code> (<code>show_hidden</code>), and auto-shuts down when <code>water_res &lt; 6</code> oz.
+          </p>
+
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div class="theme-subtle p-2.5 rounded-lg">
+              <div class="text-xs theme-muted">Water (<code>r7</code>)</div>
+              <div class="text-lg font-extrabold font-mono theme-heading"><span id="coffee-water">48</span> oz</div>
+            </div>
+            <div class="theme-subtle p-2.5 rounded-lg">
+              <div class="text-xs theme-muted">Small (6 oz)</div>
+              <div id="coffee-cnt-s" class="text-lg font-extrabold font-mono theme-heading">0</div>
+            </div>
+            <div class="theme-subtle p-2.5 rounded-lg">
+              <div class="text-xs theme-muted">Med (8 oz)</div>
+              <div id="coffee-cnt-m" class="text-lg font-extrabold font-mono theme-heading">0</div>
+            </div>
+            <div class="theme-subtle p-2.5 rounded-lg">
+              <div class="text-xs theme-muted">Large (10 oz)</div>
+              <div id="coffee-cnt-l" class="text-lg font-extrabold font-mono theme-heading">0</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="coffee-brew-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-size="S">
+              Brew Small (6 oz)
+            </button>
+            <button type="button" class="coffee-brew-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-size="M">
+              Brew Medium (8 oz)
+            </button>
+            <button type="button" class="coffee-brew-btn px-3.5 py-2 rounded-lg text-xs theme-btn-primary" data-size="L">
+              Brew Large (10 oz)
+            </button>
+            <button type="button" id="coffee-btn-hidden" class="px-3 py-2 rounded-lg text-xs theme-btn-secondary">
+              Code 'H' (show_hidden)
+            </button>
+            <button type="button" id="coffee-btn-reset" class="px-3 py-2 rounded-lg text-xs theme-btn-secondary">
+              Refill (48 oz)
+            </button>
+          </div>
+
+          <pre id="coffee-terminal" class="p-3.5 rounded-lg text-xs font-mono leading-relaxed overflow-x-auto code-block" aria-live="polite">[main_loop] Welcome to the Coffee Maker (water_res = 48 oz)
+Insert K-cup and select a cup size (S=6oz, M=8oz, L=10oz) or press 'H' for hidden telemetry.</pre>
+        </div>
+      </div>
+
+      <!-- Lab 2 & Lab 3 Subroutine & Register Architecture Inspector -->
+      <div class="theme-card card-accent-lavender p-6 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="text-lg font-bold theme-heading"><code>lab2.s</code> &amp; <code>lab3.s</code> Subroutine &amp; Register Architecture</h3>
+            <p class="text-xs theme-muted">Filter the subroutines, hardware stack protocols, and register allocations implemented across my CS 413 assembly programs.</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <input id="arm-ref-search" type="search" placeholder="Search add_func, SMULL, r10, show_hidden..."
+              aria-label="Search lab2.s and lab3.s subroutines and registers"
+              class="px-3 py-1.5 rounded-lg text-xs sm:text-sm theme-subtle" />
+            <select id="arm-ref-cat" aria-label="Filter assembly components by lab" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm theme-subtle">
+              <option value="all">All Lab Components (12)</option>
+              <option value="Lab 2 (lab2.s)">Lab 2: Stack Calculator (lab2.s)</option>
+              <option value="Lab 3 (lab3.s)">Lab 3: Coffee Maker FSM (lab3.s)</option>
+              <option value="Register Protocol">Register &amp; Stack Protocol</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b-2" style="border-color: var(--border-color);">
+                <th scope="col" class="py-2 pr-3 font-bold theme-heading">Subroutine / Register</th>
+                <th scope="col" class="py-2 px-3 font-bold theme-heading">Program</th>
+                <th scope="col" class="py-2 px-3 font-bold theme-heading">Role</th>
+                <th scope="col" class="py-2 pl-3 font-bold theme-heading">Implementation Details in My Code</th>
+              </tr>
+            </thead>
+            <tbody id="arm-ref-tbody" class="divide-y" style="border-color: var(--border-color);"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PANEL 5: EXPERIENCE, EDUCATION & CONTACT
+         ========================================================= -->
+    <section id="panel-resume" role="tabpanel" aria-labelledby="tab-resume" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Education & Relevant Coursework -->
+        <div class="theme-card p-6 shadow-sm space-y-4 lg:col-span-2">
+          <h2 class="text-xl font-extrabold theme-heading">Education &amp; Professional Experience</h2>
+
+          <div class="theme-subtle p-4 rounded-lg space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-base font-bold theme-heading">University of Alabama in Huntsville (UAH)</h3>
+              <span class="text-xs font-semibold theme-badge px-2.5 py-0.5 rounded">Expected May 2028</span>
+            </div>
+            <p class="text-sm font-semibold">Bachelor of Science in Computer Science • Minor in User Experience (Honors)</p>
+            <p class="text-xs sm:text-sm leading-relaxed">
+              <strong>Core Coursework:</strong> Analysis &amp; Design of Algorithms (CS 417), Intro to Digital Computer Architecture (CS 413), Intro to Object-Oriented Programming in Java (CS 321), Computer Organization &amp; Switching Theory (CS 309), Data Structures in C++ (CS 221), Discrete Structures (CS 214), Human Factors Psychology (PY 403), Linear Algebra (MA 244), Probability &amp; Statistics (MA 385).
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <div class="border-l-4 pl-4 space-y-1" style="border-color: var(--accent-primary);">
+              <div class="flex flex-wrap items-center justify-between">
+                <h4 class="text-sm sm:text-base font-bold theme-heading">Participant • Monarch RISE Project (American Printing House for the Blind)</h4>
+                <span class="text-xs theme-muted">June 2026 – Present</span>
+              </div>
+              <p class="text-xs sm:text-sm leading-relaxed">
+                Selected for a competitive 5-year national Disability Innovation Fund initiative advancing competitive integrated employment readiness through accessible technology. Completed the Monarch Essentials Hive certification, mastering multi-line refreshable braille and tactile graphics workflows and collaborating with assistive technology specialists to evaluate features and provide field-testing feedback for future software development.
+              </p>
+            </div>
+
+            <div class="border-l-4 pl-4 space-y-1" style="border-color: var(--accent-primary);">
+              <div class="flex flex-wrap items-center justify-between">
+                <h4 class="text-sm sm:text-base font-bold theme-heading">Founder (In Development) • Digital Accessibility Consultancy</h4>
+                <span class="text-xs theme-muted">May 2026 – Present • Huntsville, AL</span>
+              </div>
+              <p class="text-xs sm:text-sm leading-relaxed">
+                Developed a structured technical auditing methodology to evaluate web properties, stylesheets, and application source code for compliance with modern WCAG accessibility standards, helping small businesses bridge digital accessibility gaps.
+              </p>
+            </div>
+
+            <div class="border-l-4 pl-4 space-y-1" style="border-color: var(--accent-primary);">
+              <div class="flex flex-wrap items-center justify-between">
+                <h4 class="text-sm sm:text-base font-bold theme-heading">Intern • Alabama Department of Rehabilitation Services (Innovation Depot)</h4>
+                <span class="text-xs theme-muted">June – July 2022 • Birmingham, AL</span>
+              </div>
+              <p class="text-xs sm:text-sm leading-relaxed">
+                Partnered with Innovation Depot to design visual presentations, edited and optimized onboarding/training videos for YouTube, published three start-up strategy blog posts, and hosted a dedicated training session on creating accessible digital assets.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact & Quick Links Card -->
+        <div class="theme-card p-6 shadow-sm space-y-4 h-fit">
+          <h3 class="text-lg font-bold theme-heading">Contact &amp; Application Links</h3>
+          <p class="text-xs sm:text-sm leading-relaxed">
+            Available for <strong>Summer 2027 Software Engineering, Systems, and Front-End / UX Accessibility Internships</strong> in Huntsville, AL, Birmingham, AL, or remote.
+          </p>
+
+          <div class="space-y-2.5 text-xs sm:text-sm">
+            <div class="p-3 rounded-lg theme-subtle flex items-center justify-between gap-2">
+              <div>
+                <div class="font-bold theme-heading">GitHub Handle</div>
+                <div class="font-mono">@plansonec</div>
+              </div>
+              <button type="button" class="copy-btn px-2.5 py-1 rounded text-xs theme-btn-secondary" data-copy="https://github.com/plansonec">
+                Copy URL
+              </button>
+            </div>
+
+            <div class="p-3 rounded-lg theme-subtle flex items-center justify-between gap-2">
+              <div>
+                <div class="font-bold theme-heading">Primary Email</div>
+                <div class="font-mono">Emmaplanson@gmail.com</div>
+              </div>
+              <button type="button" class="copy-btn px-2.5 py-1 rounded text-xs theme-btn-secondary" data-copy="Emmaplanson@gmail.com">
+                Copy Email
+              </button>
+            </div>
+
+            <div class="p-3 rounded-lg theme-subtle flex items-center justify-between gap-2">
+              <div>
+                <div class="font-bold theme-heading">University Email</div>
+                <div class="font-mono">ecp0018@uah.edu</div>
+              </div>
+              <button type="button" class="copy-btn px-2.5 py-1 rounded text-xs theme-btn-secondary" data-copy="ecp0018@uah.edu">
+                Copy Email
+              </button>
+            </div>
+          </div>
+
+          <div id="copy-toast" class="hidden p-2.5 rounded-lg text-xs font-semibold text-center theme-badge" role="status">
+            Copied to clipboard!
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Source Code Inspection Modal -->
+  <div id="code-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background-color: rgba(0, 0, 0, 0.75);" role="dialog" aria-modal="true" aria-labelledby="code-modal-title">
+    <div class="theme-card max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b" style="border-color: var(--border-color);">
+        <h3 id="code-modal-title" class="text-base font-bold font-mono theme-heading">Source Code Preview</h3>
+        <button type="button" id="code-modal-close" class="px-3 py-1 rounded-lg text-xs theme-btn-secondary">
+          Close (Esc)
+        </button>
+      </div>
+      <div class="p-5 overflow-y-auto space-y-4">
+        <p id="code-modal-desc" class="text-xs sm:text-sm theme-muted"></p>
+        <pre id="code-modal-pre" class="p-4 rounded-lg text-xs font-mono leading-relaxed overflow-x-auto code-block"></pre>
+      </div>
+    </div>
+  </div>
+
+  <footer class="theme-card rounded-none border-b-0 border-x-0 mt-12 py-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 text-xs theme-muted">
+      <span><strong>Emma Planson</strong> • B.S. Computer Science &amp; UX Minor @ UAH</span>
+      <span>Built with Semantic HTML5, CSS3 Custom Variables &amp; Vanilla ES6 JavaScript (WCAG 2.1 AA)</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ---------------------------------------------------------
+      // 1. ACCESSIBILITY & THEME ENGINE (Ported from Session.java)
+      // ---------------------------------------------------------
+      const announcer = document.getElementById('sr-announcer');
+      function announce(msg) {
+        if (announcer) {
+          announcer.textContent = '';
+          setTimeout(function() { announcer.textContent = msg; }, 30);
+        }
+      }
+
+      let isHighContrast = false;
+      const btnContrast = document.getElementById('btn-contrast-toggle');
+      const contrastLabel = document.getElementById('contrast-label');
+      const cardBtnContrast = document.getElementById('card-btn-test-contrast');
+
+      function applyContrast(enabled) {
+        isHighContrast = enabled;
+        document.body.classList.toggle('high-contrast', isHighContrast);
+        btnContrast.setAttribute('aria-pressed', String(isHighContrast));
+        contrastLabel.textContent = isHighContrast ? 'High Contrast: On' : 'High Contrast: Off';
+        try {
+          localStorage.setItem('ep_high_contrast', isHighContrast ? '1' : '0');
+        } catch (e) {}
+        announce('High contrast mode ' + (isHighContrast ? 'enabled' : 'disabled'));
+      }
+
+      try {
+        if (localStorage.getItem('ep_high_contrast') === '1') {
+          applyContrast(true);
+        }
+      } catch (e) {}
+
+      btnContrast.addEventListener('click', function() { applyContrast(!isHighContrast); });
+      if (cardBtnContrast) {
+        cardBtnContrast.addEventListener('click', function() { applyContrast(!isHighContrast); });
+      }
+
+      function setFontScale(scale, label) {
+        document.documentElement.style.setProperty('--font-scale', String(scale));
+        announce('Text size set to ' + label);
+      }
+      document.getElementById('btn-font-dec').addEventListener('click', function() { setFontScale(1, '100%'); });
+      document.getElementById('btn-font-mid').addEventListener('click', function() { setFontScale(1.12, '112%'); });
+      document.getElementById('btn-font-inc').addEventListener('click', function() { setFontScale(1.25, '125%'); });
+
+      // ---------------------------------------------------------
+      // 2. TAB NAVIGATION
+      // ---------------------------------------------------------
+      const tabs = ['overview', 'boardgame', 'scheduler', 'arm', 'resume'];
+      function switchTab(targetTab) {
+        tabs.forEach(function(t) {
+          const btn = document.getElementById('tab-' + t);
+          const panel = document.getElementById('panel-' + t);
+          const active = (t === targetTab);
+          if (btn) btn.setAttribute('aria-selected', String(active));
+          if (panel) panel.classList.toggle('hidden', !active);
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        announce('Switched to ' + targetTab + ' section');
+      }
+
+      document.querySelectorAll('.nav-tab').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          switchTab(btn.getAttribute('data-tab'));
+        });
+      });
+
+      document.getElementById('hero-btn-boardgame').addEventListener('click', function() { switchTab('boardgame'); });
+      document.getElementById('hero-btn-scheduler').addEventListener('click', function() { switchTab('scheduler'); });
+      document.getElementById('hero-btn-arm').addEventListener('click', function() { switchTab('arm'); });
+
+      document.querySelectorAll('.open-tab-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          switchTab(btn.getAttribute('data-target'));
+        });
+      });
+
+      // ---------------------------------------------------------
+      // 3. PROJECT CARDS FILTER
+      // ---------------------------------------------------------
+      const filterBtns = document.querySelectorAll('.proj-filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const tag = btn.getAttribute('data-filter');
+          filterBtns.forEach(function(b) {
+            b.className = 'proj-filter-btn px-3 py-1.5 rounded-lg text-xs ' + (b === btn ? 'theme-btn-primary' : 'theme-btn-secondary');
+          });
+          let shown = 0;
+          projectCards.forEach(function(card) {
+            const cardTags = card.getAttribute('data-tags') || '';
+            const match = (tag === 'all') || cardTags.indexOf(tag) !== -1;
+            card.classList.toggle('hidden', !match);
+            if (match) shown++;
+          });
+          announce('Showing ' + shown + ' projects for filter ' + tag);
+        });
+      });
+
+      // ---------------------------------------------------------
+      // 4. BOARD GAME XML CATALOG & WISHLIST ENGINE
+      // ---------------------------------------------------------
+      const BGG_GAMES = [{"id": "374173", "title": "Star Wars: The Deckbuilding Game", "year": 2023, "minPlayers": 2, "maxPlayers": 2, "playTime": 30, "minAge": 12, "categories": ["Card Game", "Science Fiction"], "mechanics": ["Deck, Bag, and Pool Building", "Open Drafting"], "description": "The Rebel Alliance fights valiantly against the tyranny of the Galactic Empire. Each new victory brings the Rebels hope, and each heroic sacrifice strengthens their resolve. Still, the Empire's resources are vast, and th..."}, {"id": "381626", "title": "CATAN: Soccer Fever Scenario", "year": 2023, "minPlayers": 3, "maxPlayers": 4, "playTime": 75, "minAge": 10, "categories": ["Expansion for Base-game", "Economic", "Sports"], "mechanics": ["Dice Rolling", "Flicking", "Hexagon Grid"], "description": ""}, {"id": "381247", "title": "Dragon Eclipse", "year": 2024, "minPlayers": 1, "maxPlayers": 2, "playTime": 120, "minAge": 12, "categories": ["Adventure", "Card Game", "Fantasy"], "mechanics": ["Cooperative Game", "Deck Construction", "Hand Management"], "description": ""}, {"id": "321608", "title": "Hegemony: Lead Your Class to Victory", "year": 2023, "minPlayers": 2, "maxPlayers": 4, "playTime": 180, "minAge": 14, "categories": ["Economic", "Educational", "Political"], "mechanics": ["Action/Event", "Hand Management", "Variable Player Powers"], "description": ""}, {"id": "316624", "title": "Stationfall", "year": 2023, "minPlayers": 1, "maxPlayers": 9, "playTime": 120, "minAge": 12, "categories": ["Deduction", "Science Fiction"], "mechanics": ["Action Points", "Deduction", "Hidden Roles"], "description": ""}, {"id": "295770", "title": "Frosthaven", "year": 2023, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 14, "categories": ["Adventure", "Exploration", "Fantasy"], "mechanics": ["Campaign / Battle Card Driven", "Communication Limits", "Cooperative Game"], "description": ""}, {"id": "350184", "title": "Earth", "year": 2023, "minPlayers": 1, "maxPlayers": 5, "playTime": 90, "minAge": 13, "categories": ["Animals", "Card Game", "Environmental"], "mechanics": ["End Game Bonuses", "Hand Management", "Variable Set-up"], "description": ""}, {"id": "366013", "title": "Heat: Pedal to the Metal", "year": 2022, "minPlayers": 1, "maxPlayers": 6, "playTime": 60, "minAge": 10, "categories": ["Racing"], "mechanics": ["Hand Management", "Race", "Simultaneous Action Selection"], "description": ""}, {"id": "224517", "title": "Brass: Birmingham", "year": 2018, "minPlayers": 2, "maxPlayers": 4, "playTime": 120, "minAge": 14, "categories": ["Economic", "Industry / Manufacturing", "Post-Napoleonic"], "mechanics": ["Hand Management", "Income", "Loans"], "description": ""}, {"id": "342942", "title": "Ark Nova", "year": 2021, "minPlayers": 1, "maxPlayers": 4, "playTime": 150, "minAge": 14, "categories": ["Animals", "Economic", "Environmental"], "mechanics": ["End Game Bonuses", "Hand Management", "Hexagon Grid"], "description": ""}, {"id": "316554", "title": "Dune: Imperium", "year": 2020, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 14, "categories": ["Movies / TV / Radio theme", "Novel-based", "Political"], "mechanics": ["Card Play Conflict Resolution", "Deck, Bag, and Pool Building", "Force Commitment"], "description": "Some important links: The Official FAQ, the Unofficial FAQ, and an Automa (solo and 2p) Overview Dune: Imperium is a game that finds inspiration in elements and characters from the Dune legacy, both the new film from Leg..."}, {"id": "327711", "title": "It's a Wonderful Kingdom", "year": 2021, "minPlayers": 1, "maxPlayers": 2, "playTime": 60, "minAge": 14, "categories": ["Card Game", "Fantasy", "Medieval"], "mechanics": ["Betting and Bluffing", "I Cut, You Choose", "Open Drafting"], "description": ""}, {"id": "162886", "title": "Spirit Island", "year": 2017, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 13, "categories": ["Fantasy", "Fighting", "Mythology"], "mechanics": ["Action Retrieval", "Area Majority / Influence", "Automatic Resource Growth"], "description": ""}, {"id": "332772", "title": "Revive", "year": 2022, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 14, "categories": ["Civilization", "Industry / Manufacturing"], "mechanics": ["Deck, Bag, and Pool Building", "Scenario / Mission / Campaign Game", "Tech Trees / Tech Tracks"], "description": ""}, {"id": "218479", "title": "Cerebria: The Inside World", "year": 2018, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 14, "categories": ["Fantasy"], "mechanics": ["Action Points", "Area Majority / Influence", "Cooperative Game"], "description": ""}, {"id": "324090", "title": "Scarface 1920", "year": 2023, "minPlayers": 1, "maxPlayers": 4, "playTime": 150, "minAge": 14, "categories": ["Economic", "Mafia"], "mechanics": ["Area Majority / Influence", "End Game Bonuses", "Hand Management"], "description": ""}, {"id": "174430", "title": "Gloomhaven", "year": 2017, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 14, "categories": ["Adventure", "Exploration", "Fantasy"], "mechanics": ["Action Queue", "Action Retrieval", "Campaign / Battle Card Driven"], "description": ""}, {"id": "381248", "title": "Nemesis: Retaliation", "year": 2024, "minPlayers": 0, "maxPlayers": 0, "playTime": 180, "minAge": 0, "categories": ["Adventure", "Horror", "Miniatures"], "mechanics": ["Cooperative Game", "Dice Rolling", "Hidden Roles"], "description": ""}, {"id": "312484", "title": "Lost Ruins of Arnak", "year": 2020, "minPlayers": 1, "maxPlayers": 4, "playTime": 120, "minAge": 12, "categories": ["Adventure", "Exploration", "Travel"], "mechanics": ["Contracts", "Deck, Bag, and Pool Building", "Multi-Use Cards"], "description": ""}, {"id": "167791", "title": "Terraforming Mars", "year": 2016, "minPlayers": 1, "maxPlayers": 5, "playTime": 120, "minAge": 12, "categories": ["Economic", "Environmental", "Industry / Manufacturing"], "mechanics": ["Closed Drafting", "Contracts", "Enclosure"], "description": ""}, {"id": "254127", "title": "Europa Universalis: The Price of Power", "year": 2023, "minPlayers": 1, "maxPlayers": 4, "playTime": 300, "minAge": 14, "categories": ["Age of Reason", "Civilization", "Economic"], "mechanics": ["Action Points", "Area Majority / Influence", "Area Movement"], "description": "Govern one of Europe's great nations through the Ages of Discovery, Reformation, Absolutism, and Revolutions spanning more than three hundred years of history. Lift your nation out of the slumber of the Dark Ages and cre..."}, {"id": "266192", "title": "Wingspan", "year": 2019, "minPlayers": 1, "maxPlayers": 5, "playTime": 70, "minAge": 10, "categories": ["Animals", "Card Game", "Educational"], "mechanics": ["Contracts", "Dice Rolling", "End Game Bonuses"], "description": ""}, {"id": "285774", "title": "Marvel Champions: The Card Game", "year": 2019, "minPlayers": 1, "maxPlayers": 4, "playTime": 90, "minAge": 14, "categories": ["Card Game", "Collectible Components", "Comic Book / Strip"], "mechanics": ["Cooperative Game", "Deck Construction", "Hand Management"], "description": ""}, {"id": "205637", "title": "Arkham Horror: The Card Game", "year": 2016, "minPlayers": 1, "maxPlayers": 2, "playTime": 120, "minAge": 14, "categories": ["Adventure", "Card Game", "Collectible Components"], "mechanics": ["Action Points", "Area Movement", "Communication Limits"], "description": ""}];
+      const wishlistIds = new Set(['374173']); // Pre-seed 1 favorite so user sees wishlist badge immediately
+      let showWishlistOnly = false;
+
+      const searchInput = document.getElementById('bgg-search-input');
+      const playerFilter = document.getElementById('bgg-player-filter');
+      const timeFilter = document.getElementById('bgg-time-filter');
+      const sortSelect = document.getElementById('bgg-sort-select');
+      const btnAllGames = document.getElementById('bgg-btn-all');
+      const btnWishlistGames = document.getElementById('bgg-btn-wishlist');
+      const btnResetBgg = document.getElementById('bgg-btn-reset');
+      const bggGrid = document.getElementById('bgg-games-grid');
+      const bggStatus = document.getElementById('bgg-status-text');
+      const countMatchingEl = document.getElementById('bgg-count-matching');
+      const countWishlistEl = document.getElementById('bgg-count-wishlist');
+
+      function renderBggCatalog() {
+        const query = (searchInput.value || '').trim().toLowerCase();
+        const pFilter = playerFilter.value;
+        const tFilter = timeFilter.value;
+        const sortBy = sortSelect.value;
+
+        let filtered = BGG_GAMES.filter(function(g) {
+          if (showWishlistOnly && !wishlistIds.has(g.id)) return false;
+          if (query) {
+            const hay = (g.title + ' ' + g.description + ' ' + g.categories.join(' ') + ' ' + g.mechanics.join(' ')).toLowerCase();
+            if (hay.indexOf(query) === -1) return false;
+          }
+          if (pFilter !== 'all') {
+            const p = parseInt(pFilter, 10);
+            if (p === 5) {
+              if (g.maxPlayers < 5) return false;
+            } else {
+              if (g.minPlayers > p || g.maxPlayers < p) return false;
+            }
+          }
+          if (tFilter !== 'all') {
+            const maxT = parseInt(tFilter, 10);
+            if (g.playTime > maxT) return false;
+          }
+          return true;
+        });
+
+        filtered.sort(function(a, b) {
+          if (sortBy === 'time-asc') return a.playTime - b.playTime;
+          if (sortBy === 'year-desc') return b.year - a.year;
+          return a.title.localeCompare(b.title);
+        });
+
+        countMatchingEl.textContent = String(BGG_GAMES.length);
+        countWishlistEl.textContent = String(wishlistIds.size);
+        bggStatus.innerHTML = 'Showing <strong>' + filtered.length + '</strong> of ' + BGG_GAMES.length + ' games parsed from <code>bgg90Games.xml</code>';
+
+        if (filtered.length === 0) {
+          bggGrid.innerHTML = '<div class="col-span-full theme-card p-8 text-center space-y-2"><p class="text-base font-bold theme-heading">No matching board games found.</p><p class="text-xs theme-muted">Try clearing your search query or relaxing the player/playtime filters.</p></div>';
+          return;
+        }
+
+        bggGrid.innerHTML = filtered.map(function(g) {
+          const isFav = wishlistIds.has(g.id);
+          const cats = g.categories.slice(0, 2).map(function(c) {
+            return '<span class="text-xs px-2 py-0.5 rounded theme-subtle">' + c + '</span>';
+          }).join('');
+          const playersText = (g.minPlayers === g.maxPlayers) ? (g.minPlayers + ' Players') : (g.minPlayers + '–' + g.maxPlayers + ' Players');
+          return (
+            '<article class="theme-card p-5 flex flex-col justify-between gap-3 shadow-sm">' +
+              '<div class="space-y-2">' +
+                '<div class="flex items-start justify-between gap-2">' +
+                  '<span class="text-xs font-mono px-2 py-0.5 rounded theme-badge">BGG #' + g.id + ' • ' + g.year + '</span>' +
+                  '<button type="button" class="bgg-fav-btn px-2.5 py-1 rounded-full text-xs font-bold ' + (isFav ? 'theme-btn-primary' : 'theme-btn-secondary') + '" data-id="' + g.id + '" aria-pressed="' + isFav + '">' +
+                    (isFav ? '★ In Wishlist' : '☆ Add Wishlist') +
+                  '</button>' +
+                '</div>' +
+                '<h3 class="text-base font-bold theme-heading leading-snug">' + g.title + '</h3>' +
+                '<div class="flex flex-wrap gap-2 text-xs font-semibold theme-muted">' +
+                  '<span>👥 ' + playersText + '</span>' +
+                  '<span>•</span>' +
+                  '<span>⏱ ' + g.playTime + ' min</span>' +
+                  '<span>•</span>' +
+                  '<span>Ages ' + g.minAge + '+</span>' +
+                '</div>' +
+                '<p class="text-xs leading-relaxed">' + g.description + '</p>' +
+              '</div>' +
+              '<div class="flex flex-wrap gap-1.5 pt-2 border-t" style="border-color: var(--border-color);">' +
+                cats +
+              '</div>' +
+            '</article>'
+          );
+        }).join('');
+
+        bggGrid.querySelectorAll('.bgg-fav-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            const gid = btn.getAttribute('data-id');
+            if (wishlistIds.has(gid)) {
+              wishlistIds.delete(gid);
+              announce('Removed game #' + gid + ' from wishlist');
+            } else {
+              wishlistIds.add(gid);
+              announce('Added game #' + gid + ' to wishlist');
+            }
+            renderBggCatalog();
+          });
+        });
+      }
+
+      searchInput.addEventListener('input', renderBggCatalog);
+      playerFilter.addEventListener('change', renderBggCatalog);
+      timeFilter.addEventListener('change', renderBggCatalog);
+      sortSelect.addEventListener('change', renderBggCatalog);
+
+      btnAllGames.addEventListener('click', function() {
+        showWishlistOnly = false;
+        btnAllGames.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-primary';
+        btnWishlistGames.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-secondary';
+        renderBggCatalog();
+      });
+
+      btnWishlistGames.addEventListener('click', function() {
+        showWishlistOnly = true;
+        btnWishlistGames.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-primary';
+        btnAllGames.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-secondary';
+        renderBggCatalog();
+      });
+
+      btnResetBgg.addEventListener('click', function() {
+        searchInput.value = '';
+        playerFilter.value = 'all';
+        timeFilter.value = 'all';
+        sortSelect.value = 'title';
+        showWishlistOnly = false;
+        btnAllGames.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-primary';
+        btnWishlistGames.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-secondary';
+        renderBggCatalog();
+        announce('Board game catalog filters reset');
+      });
+
+      renderBggCatalog();
+
+      // ---------------------------------------------------------
+      // 5. C++17 CPU SCHEDULER BENCHMARK & LIVE SIMULATOR
+      // ---------------------------------------------------------
+      const BENCH_DATA = {
+        '20': {
+          rows: [
+            { name: 'RoundRobin (ArrayList)', ns: '54.09 ns', cpuTime: '6,390.0', ioTime: '3,610.0', ioWait: '51,719.2' },
+            { name: 'FastRoundRobin (LinkedList)', ns: '73.17 ns', cpuTime: '6,388.0', ioTime: '3,612.2', ioWait: '51,563.0' },
+            { name: 'CompletelyFair (BSTMultimap)', ns: '229.83 ns', cpuTime: '5,004.0', ioTime: '4,996.5', ioWait: '32,279.9 ★' }
+          ],
+          insight: '<strong>20-Process Takeaway:</strong> <code>CompletelyFair (BSTMultimap)</code> achieves near-exact CPU fairness (<code>5,004.0</code> vs. <code>4,996.5</code> cycles) and slashes I/O-bound wait time by <strong>37.6%</strong> (from <code>51,719</code> down to <code>32,280</code> cycles) because waking I/O processes have lower accumulated <code>cpuTime</code> and are immediately selected via <code>procTree-&gt;getMin()</code>.'
+        },
+        '200': {
+          rows: [
+            { name: 'RoundRobin (ArrayList)', ns: '74.85 ns', cpuTime: '593.9', ioTime: '406.1', ioWait: '94,569.2' },
+            { name: 'FastRoundRobin (LinkedList)', ns: '67.34 ns ★', cpuTime: '593.1', ioTime: '406.9', ioWait: '94,527.1' },
+            { name: 'CompletelyFair (BSTMultimap)', ns: '408.63 ns', cpuTime: '500.0', ioTime: '500.0', ioWait: '93,293.5 ★' }
+          ],
+          insight: '<strong>200-Process Scaling Takeaway:</strong> As queue length grows from 20 to 200 processes, <code>FastRoundRobin (LinkedList)</code> overtakes <code>ArrayList</code> in raw dispatch speed (<strong>67.34 ns</strong> vs. <strong>74.85 ns</strong>) because <code>LinkedList::popFront()</code> unlinks the head node in $O(1)$ time, whereas <code>ArrayList::popFront()</code> shifts all remaining pointers in $O(n)$ time.'
+        }
+      };
+
+      const benchTbody = document.getElementById('bench-table-body');
+      const benchInsight = document.getElementById('bench-insight-box');
+      const btnBench20 = document.getElementById('bench-btn-20');
+      const btnBench200 = document.getElementById('bench-btn-200');
+
+      function renderBench(key) {
+        const d = BENCH_DATA[key];
+        benchTbody.innerHTML = d.rows.map(function(r) {
+          return (
+            '<tr>' +
+              '<td class="py-2.5 pr-2 font-mono font-semibold theme-heading">' + r.name + '</td>' +
+              '<td class="py-2.5 px-2 font-mono text-right">' + r.ns + '</td>' +
+              '<td class="py-2.5 px-2 font-mono text-right">' + r.cpuTime + '</td>' +
+              '<td class="py-2.5 px-2 font-mono text-right">' + r.ioTime + '</td>' +
+              '<td class="py-2.5 pl-2 font-mono font-bold text-right theme-heading">' + r.ioWait + '</td>' +
+            '</tr>'
+          );
+        }).join('');
+        benchInsight.innerHTML = d.insight;
+      }
+
+      btnBench20.addEventListener('click', function() {
+        btnBench20.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-primary';
+        btnBench200.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-secondary';
+        renderBench('20');
+      });
+      btnBench200.addEventListener('click', function() {
+        btnBench200.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-primary';
+        btnBench20.className = 'px-3 py-1.5 rounded-lg text-xs theme-btn-secondary';
+        renderBench('200');
+      });
+      renderBench('20');
+
+      // Live Process Dispatch Simulator
+      let simCycle = 0;
+      let simDispatches = 0;
+      let simProcs = [];
+
+      function initSim() {
+        simCycle = 0;
+        simDispatches = 0;
+        simProcs = [
+          { id: 'P1', type: 'CPU-Bound', cpuTime: 0, waitTime: 0, blockedUntil: 0 },
+          { id: 'P2', type: 'CPU-Bound', cpuTime: 0, waitTime: 0, blockedUntil: 0 },
+          { id: 'P3', type: 'I/O-Bound', cpuTime: 0, waitTime: 0, blockedUntil: 0 },
+          { id: 'P4', type: 'I/O-Bound', cpuTime: 0, waitTime: 0, blockedUntil: 0 }
+        ];
+        document.getElementById('sim-last-action').textContent =
+          'Ready: P1, P2 (CPU-Bound) & P3, P4 (I/O-Bound) initialized at cpuTime = 0.';
+        renderSimState();
+      }
+
+      function stepSim() {
+        const mode = document.getElementById('sim-sched-type').value;
+        if (mode === 'cfs') {
+          simProcs.sort(function(a, b) {
+            if (a.cpuTime !== b.cpuTime) return a.cpuTime - b.cpuTime;
+            return a.id.localeCompare(b.id);
+          });
+        }
+
+        let pickedIdx = -1;
+        for (let i = 0; i < simProcs.length; i++) {
+          if (simProcs[i].blockedUntil <= simCycle) {
+            pickedIdx = i;
+            break;
+          }
+        }
+
+        if (pickedIdx === -1) {
+          simCycle += 10;
+          document.getElementById('sim-last-action').textContent =
+            '[Cycle ' + simCycle + '] All processes blocked on I/O; idle +10 cycles.';
+        } else {
+          const p = simProcs.splice(pickedIdx, 1)[0];
+          const used = (p.type === 'CPU-Bound') ? 10 : 4;
+          simProcs.forEach(function(other) {
+            if (other.blockedUntil <= simCycle) {
+              other.waitTime += used;
+            }
+          });
+          p.cpuTime += used;
+          simCycle += used;
+          simDispatches++;
+          if (p.type === 'I/O-Bound') {
+            p.blockedUntil = simCycle + 8;
+          }
+          simProcs.push(p);
+          document.getElementById('sim-last-action').textContent =
+            '[Dispatch #' + simDispatches + '] ' + (mode === 'cfs' ? 'BSTMultimap::getMin()' : 'LinkedList::popFront()') +
+            ' selected ' + p.id + ' (' + p.type + ') → consumed ' + used + ' cycles (total cpuTime = ' + p.cpuTime + ').';
+        }
+        renderSimState();
+      }
+
+      function renderSimState() {
+        document.getElementById('sim-cycle-num').textContent = String(simCycle);
+        document.getElementById('sim-dispatch-count').textContent = String(simDispatches);
+        const mode = document.getElementById('sim-sched-type').value;
+        const displayList = simProcs.slice();
+        if (mode === 'cfs') {
+          displayList.sort(function(a, b) { return a.cpuTime - b.cpuTime; });
+        }
+        const maxCpu = Math.max(20, ...displayList.map(function(p) { return p.cpuTime; }));
+        document.getElementById('sim-proc-list').innerHTML = displayList.map(function(p, idx) {
+          const isBlocked = p.blockedUntil > simCycle;
+          const pct = Math.min(100, Math.round((p.cpuTime / maxCpu) * 100));
+          return (
+            '<div class="p-3 rounded-lg theme-subtle space-y-1.5">' +
+              '<div class="flex items-center justify-between text-xs font-mono">' +
+                '<span class="font-bold theme-heading">' + (idx + 1) + '. ' + p.id + ' (' + p.type + ')</span>' +
+                '<span>cpuTime: <strong>' + p.cpuTime + '</strong> | waitTime: ' + p.waitTime + ' | ' +
+                  (isBlocked ? ('Blocked until ' + p.blockedUntil) : 'READY') +
+                '</span>' +
+              '</div>' +
+              '<div class="w-full h-2.5 rounded overflow-hidden" style="background-color: var(--bg-card); border: 1px solid var(--border-color);">' +
+                '<div class="h-full" style="width: ' + pct + '%; background-color: var(--accent-primary);"></div>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join('');
+      }
+
+      document.getElementById('sim-btn-step').addEventListener('click', function() {
+        stepSim();
+        announce(document.getElementById('sim-last-action').textContent);
+      });
+      document.getElementById('sim-btn-auto').addEventListener('click', function() {
+        for (let i = 0; i < 10; i++) stepSim();
+        announce('Simulated 10 slices. Cycle is now ' + simCycle);
+      });
+      document.getElementById('sim-btn-reset').addEventListener('click', function() {
+        initSim();
+        announce('Process scheduler simulator reset');
+      });
+      document.getElementById('sim-sched-type').addEventListener('change', initSim);
+      initSim();
+
+      // ---------------------------------------------------------
+      // 6. ARMV4 LAB SIMULATORS (lab2.s & lab3.s) & ACCESSIBLE REF
+      // ---------------------------------------------------------
+      const calcN1 = document.getElementById('arm-calc-n1');
+      const calcN2 = document.getElementById('arm-calc-n2');
+      const calcOp = document.getElementById('arm-calc-op');
+      const calcOut = document.getElementById('arm-calc-output');
+
+      function runArmCalculator() {
+        const n1 = Math.trunc(Number(calcN1.value));
+        const n2 = Math.trunc(Number(calcN2.value));
+        const op = calcOp.value;
+        const MAX_INT32 = 2147483647;
+
+        if (isNaN(n1) || isNaN(n2) || n1 < 0 || n2 < 0) {
+          calcOut.textContent =
+            '[prompt_num] CMP r4, #0 -> BLT err_negative\\n' +
+            'Error: Input must be a positive integer or zero. Please re-enter.';
+          announce('ARM Calculator Error: negative input rejected');
+          return;
+        }
+
+        let trace = '[main] r4 = ' + n1 + ', r5 = ' + n2 + ', r6 = ' + op + '\\n';
+        trace += '[stack] PUSH {r4, r5}  -->  [subroutine] POP {r10, r11} (r10=' + n1 + ', r11=' + n2 + ')\\n';
+
+        if (op === '1') {
+          const sum = n1 + n2;
+          if (sum > MAX_INT32) {
+            trace += '[add_func] ADDS r12, r10, r11  -->  CPSR V=1 (Signed 32-bit Overflow!)\\n';
+            trace += 'Overflow Error: ' + n1 + ' + ' + n2 + ' exceeds 32-bit signed range!';
+          } else {
+            trace += '[add_func] ADDS r12, r10, r11  -->  CPSR V=0 (BVC add_no_ovf)  -->  PUSH {r12}\\n';
+            trace += 'Result: ' + n1 + ' + ' + n2 + ' = ' + sum;
+          }
+        } else if (op === '2') {
+          const diff = n1 - n2;
+          trace += '[sub_func] SUB r10, r10, r11  -->  PUSH {r10}\\n';
+          trace += 'Result: ' + n1 + ' - ' + n2 + ' = ' + diff;
+        } else if (op === '3') {
+          const prod = n1 * n2;
+          if (prod > MAX_INT32) {
+            trace += '[mul_func] SMULL r2, r12, r10, r11  -->  r12 != 0 or r2 < 0 (64-bit Overflow Trap!)\\n';
+            trace += 'Overflow Error: ' + n1 + ' * ' + n2 + ' exceeds 32-bit signed range!';
+          } else {
+            trace += '[mul_func] SMULL r2, r12, r10, r11  -->  r12=0, r2=' + prod + '  -->  PUSH {r10}\\n';
+            trace += 'Result: ' + n1 + ' * ' + n2 + ' = ' + prod;
+          }
+        } else if (op === '4') {
+          if (n2 === 0) {
+            trace += '[prompt_num2] CMP r5, #0  -->  BEQ err_div_zero\\n';
+            trace += 'Error: Division by zero is not allowed. Please enter a non-zero divisor.';
+          } else {
+            const q = Math.floor(n1 / n2);
+            const r = n1 % n2;
+            trace += '[div_subtract_loop] Repeatedly subtracted ' + n2 + ' (' + q + ' iterations)  -->  PUSH {r10, r11}\\n';
+            trace += 'Result: ' + n1 + ' / ' + n2 + ' quotient = ' + q + '  remainder = ' + r;
+          }
+        }
+        calcOut.textContent = trace;
+        announce('ARM Calculator result updated');
+      }
+
+      document.getElementById('arm-calc-run').addEventListener('click', runArmCalculator);
+      document.getElementById('arm-calc-preset-div').addEventListener('click', function() {
+        calcN1.value = '654';
+        calcN2.value = '45';
+        calcOp.value = '4';
+        runArmCalculator();
+      });
+      document.getElementById('arm-calc-preset-ovf').addEventListener('click', function() {
+        calcN1.value = '2147449525';
+        calcN2.value = '1947583648';
+        calcOp.value = '1';
+        runArmCalculator();
+      });
+      runArmCalculator();
+
+      // Lab 3 Coffee Maker FSM Simulator
+      let coffeeWater = 48;
+      let cntS = 0, cntM = 0, cntL = 0;
+      const coffeeTerminal = document.getElementById('coffee-terminal');
+
+      function updateCoffeeUI(logMsg) {
+        document.getElementById('coffee-water').textContent = String(coffeeWater);
+        document.getElementById('coffee-cnt-s').textContent = String(cntS);
+        document.getElementById('coffee-cnt-m').textContent = String(cntM);
+        document.getElementById('coffee-cnt-l').textContent = String(cntL);
+        coffeeTerminal.textContent = logMsg;
+        announce(logMsg);
+      }
+
+      document.querySelectorAll('.coffee-brew-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const sz = btn.getAttribute('data-size');
+          if (coffeeWater < 6) {
+            updateCoffeeUI('[refill_shutdown] Water level below 6 oz (' + coffeeWater + ' oz). Please refill the reservoir.\\nShutting down machine.');
+            return;
+          }
+          const oz = (sz === 'S') ? 6 : (sz === 'M' ? 8 : 10);
+          const label = (sz === 'S') ? 'Small (6 oz)' : (sz === 'M' ? 'Medium (8 oz)' : 'Large (10 oz)');
+          if (coffeeWater < oz) {
+            updateCoffeeUI('[check_water] CMP r7 (' + coffeeWater + '), r6 (' + oz + ') -> BLT str_no_wat\\nNot enough water for ' + label + '. Please select a smaller cup size.');
+            return;
+          }
+          coffeeWater -= oz;
+          if (sz === 'S') cntS++;
+          else if (sz === 'M') cntM++;
+          else cntL++;
+
+          let msg = '[dispense_coffee] Brewed ' + label + '! Deducted ' + oz + ' oz (water_res = ' + coffeeWater + ' oz).\\nCoffee has been dispensed.';
+          if (coffeeWater < 6) {
+            msg += '\\n[refill_shutdown] CMP r7, #6 -> BLT refill_shutdown: Water level below 6 oz. Shutting down machine.';
+          }
+          updateCoffeeUI(msg);
+        });
+      });
+
+      document.getElementById('coffee-btn-hidden').addEventListener('click', function() {
+        updateCoffeeUI(
+          '[show_hidden] Secret code \'H\' entered (5-arg AAPCS stack-aligned printf):\\n' +
+          'Water level: ' + coffeeWater + ' oz | Small: ' + cntS + ' | Medium: ' + cntM + ' | Large: ' + cntL
+        );
+      });
+
+      document.getElementById('coffee-btn-reset').addEventListener('click', function() {
+        coffeeWater = 48;
+        cntS = 0; cntM = 0; cntL = 0;
+        updateCoffeeUI('[main_loop] Reservoir refilled to 48 oz and counters reset to 0. Ready to brew!');
+      });
+
+      // Emma Planson's lab2.s & lab3.s Subroutine & Register Architecture Data
+      const ARM_REF_ITEMS = [
+        { syntax: 'add_func (POP {r10,r11})', cat: 'Lab 2 (lab2.s)', name: 'Signed Addition with Overflow Trap', desc: 'Pops caller operands into isolated registers r10 and r11, executes ADDS r12, r10, r11, checks CPSR V flag via BVC add_no_ovf, sets r0=1 on overflow, and pushes sum onto the hardware stack.' },
+        { syntax: 'sub_func (POP {r10,r11})', cat: 'Lab 2 (lab2.s)', name: 'Stack-Passed Subtraction', desc: 'Pops operands from hardware stack into r10 and r11, computes SUB r10, r10, r11, pushes difference onto the stack, and returns via BX lr.' },
+        { syntax: 'mul_func (SMULL r2, r12, r10, r11)', cat: 'Lab 2 (lab2.s)', name: '64-bit Multiply Overflow Check', desc: 'Uses 64-bit Signed Multiply Long (SMULL) into {r12, r2} and checks if upper 32 bits (r12 != 0) or sign bit of r2 (< 0) overflowed 32-bit signed bounds.' },
+        { syntax: 'div_func & div_subtract_loop', cat: 'Lab 2 (lab2.s)', name: 'Iterative Subtraction Division', desc: 'Implements integer division without hardware divide by repeatedly subtracting divisor (r11) from dividend (r10), incrementing quotient (r12), and pushing both quotient and remainder (PUSH {r10, r11}).' },
+        { syntax: 'clear_input_buffer', cat: 'Lab 2 (lab2.s)', name: 'Stdin Stream Sanitizer', desc: 'Calls BL getchar in a loop until newline (#10) or EOF (#-1) to recover cleanly when scanf encounters non-integer user input.' },
+        { syntax: 'r4–r8 vs. r10–r11', cat: 'Register Protocol', name: 'Caller / Callee Register Isolation', desc: 'In lab2.s, main stores validated inputs and menu state in r4–r8 and pushes {r4, r5} onto the stack; subroutines pop exclusively into r10–r11 to guarantee register isolation.' },
+        { syntax: 'prompt_cup_size & check_water', cat: 'Lab 3 (lab3.s)', name: 'Cup Size Dispatch & Reservoir Guard', desc: 'Routes S/1 (6 oz, =cnt_S), M/2 (8 oz, =cnt_M), and L/3 (10 oz, =cnt_L) into r6 and r5, then compares water_res (r7) against r6 before allowing brewing.' },
+        { syntax: 'dispense_coffee & refill_shutdown', cat: 'Lab 3 (lab3.s)', name: 'Brewing Deduction & Auto-Shutdown', desc: 'Subtracts brewed ounces (r6) from water_res, increments the size counter [r5], and branches to refill_shutdown when water_res drops below 6 oz.' },
+        { syntax: 'show_hidden (Code "H" / "h")', cat: 'Lab 3 (lab3.s)', name: 'Hidden Inventory Telemetry', desc: 'Secret diagnostic routine callable from any menu prompt; loads water_res, cnt_S, cnt_M, and cnt_L and prints all four metrics in a single printf call.' },
+        { syntax: 'flush_input', cat: 'Lab 3 (lab3.s)', name: 'Line Buffer Flush Subroutine', desc: 'Consumes trailing characters up to "\\n" (#10) or EOF (#-1) after each single-character scanf read to prevent stray characters from triggering menu branches.' },
+        { syntax: 'sub sp, sp, #8 / str r4, [sp]', cat: 'Register Protocol', name: '8-Byte AAPCS Stack Alignment', desc: 'Used in lab2.s (call_div) and lab3.s (show_hidden) to pass the 5th printf argument on the hardware stack while maintaining 8-byte stack pointer alignment.' },
+        { syntax: 'water_res / cnt_S / cnt_M / cnt_L', cat: 'Lab 3 (lab3.s)', name: '.data Section State Words', desc: '32-bit .word variables in the .data segment tracking the 48 oz water reservoir and cumulative cup counts across state machine transitions.' }
+      ];
+
+      const armSearch = document.getElementById('arm-ref-search');
+      const armCat = document.getElementById('arm-ref-cat');
+      const armTbody = document.getElementById('arm-ref-tbody');
+
+      function renderArmRef() {
+        const q = (armSearch.value || '').trim().toLowerCase();
+        const c = armCat.value;
+        const rows = ARM_REF_ITEMS.filter(function(item) {
+          if (c !== 'all' && item.cat !== c) return false;
+          if (q && (item.syntax + ' ' + item.name + ' ' + item.desc).toLowerCase().indexOf(q) === -1) return false;
+          return true;
+        });
+        armTbody.innerHTML = rows.map(function(item) {
+          return (
+            '<tr>' +
+              '<td class="py-2.5 pr-3 font-mono font-bold theme-heading whitespace-nowrap">' + item.syntax + '</td>' +
+              '<td class="py-2.5 px-3 text-xs"><span class="px-2 py-0.5 rounded theme-subtle">' + item.cat + '</span></td>' +
+              '<td class="py-2.5 px-3 font-semibold theme-heading">' + item.name + '</td>' +
+              '<td class="py-2.5 pl-3 leading-relaxed">' + item.desc + '</td>' +
+            '</tr>'
+          );
+        }).join('');
+      }
+      armSearch.addEventListener('input', renderArmRef);
+      armCat.addEventListener('change', renderArmRef);
+      renderArmRef();
+
+      // ---------------------------------------------------------
+      // 7. CODE PREVIEW MODAL & CLIPBOARD COPY
+      // ---------------------------------------------------------
+      const SNIPPETS = {
+        'java-parser': {
+          title: 'GameParser.java & highContrast.css (CS 321 Board Game Database)',
+          desc: 'Excerpts from Emma Planson\'s DOM XML Parser (GameParser.java) and WCAG High-Contrast stylesheet (highContrast.css).',
+          code:
+`// GameParser.java — DOM XML Parsing & In-Memory Caching
+public static List<Game> parseGames(InputStream inputStream) {
+    List<Game> gamesList = new ArrayList<>();
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    Document document = builder.parse(inputStream);
+    document.getDocumentElement().normalize();
+
+    NodeList nodeList = document.getElementsByTagName("item");
+    for (int i = 0; i < nodeList.getLength(); i++) {
+        Element element = (Element) nodeList.item(i);
+        String gameId = element.getAttribute("id");
+        String title = ((Element) element.getElementsByTagName("name").item(0)).getAttribute("value");
+        int minPlayers = Integer.parseInt(((Element) element.getElementsByTagName("minplayers").item(0)).getAttribute("value"));
+        int maxPlayers = Integer.parseInt(((Element) element.getElementsByTagName("maxplayers").item(0)).getAttribute("value"));
+        int playTime = Integer.parseInt(((Element) element.getElementsByTagName("playingtime").item(0)).getAttribute("value"));
+
+        Game game = new Game(title, minPlayers, maxPlayers, playTime);
+        game.setGameID(gameId);
+        gamesList.add(game);
+    }
+    fullGamesList = gamesList;
+    return gamesList;
+}
+
+/* highContrast.css — High-Visibility Yellow-on-Black Accessibility Theme */
+.root { -fx-background-color: #000000; }
+.label, .text, .check-box { -fx-text-fill: #FFFF00; -fx-font-weight: bold; }
+.button, .text-field {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+}
+.button:hover, .button:focused {
+    -fx-background-color: #FFFF00;
+    -fx-text-fill: #000000;
+}`
+        },
+        'cpp-cfs': {
+          title: 'Scheduler.cpp & BSTMultimap.tpp (CS 221 CPU Process Scheduler)',
+          desc: 'Excerpts showing RoundRobin, FastRoundRobin (LinkedList), and CompletelyFair (BSTMultimap) process selection.',
+          code:
+`// Scheduler.cpp — Polymorphic Process Dispatchers
+FastRoundRobin::FastRoundRobin() {
+    delete procQueue;
+    procQueue = new LinkedList<Process*>(); // O(1) popFront & pushBack
+}
+
+CompletelyFair::CompletelyFair() {
+    procTree = new BSTMultimap<int, Process*>(); // Keyed by accumulated cpuTime
+}
+
+void CompletelyFair::addProcess(Process* proc) {
+    procTree->insert(proc->getCPUTime(), proc);
+}
+
+Process* CompletelyFair::popNext(int curCycle) {
+    BSTForwardIterator<int, Process*> it = procTree->getMin();
+    while (!it.isPastEnd()) {
+        Process* p = it.getValue();
+        if (!p->isBlocked(curCycle)) {
+            procTree->remove(it);
+            return p;
+        }
+        it.next();
+    }
+    return nullptr;
+}`
+        },
+        'arm-lab2': {
+          title: 'lab2.s & lab3.s (CS 413 32-bit ARMv4 Assembly)',
+          desc: 'Excerpts from Emma Planson\'s Stack-Based Four-Function Calculator (lab2.s) and Coffee Maker FSM (lab3.s).',
+          code:
+`@ lab2.s — Subroutines with Stack Parameter Passing & Overflow Traps
+add_func:
+    @ Pop operands into r10/r11, add values, set overflow flag in r0, and push sum
+    POP {r10, r11}
+    ADDS r12, r10, r11
+    MOV r0, #0
+    BVC add_no_ovf
+    MOV r0, #1
+add_no_ovf:
+    PUSH {r12}
+    BX lr
+
+mul_func:
+    @ 64-bit Signed Multiply Long (SMULL) to trap 32-bit signed overflow
+    POP {r10, r11}
+    SMULL r2, r12, r10, r11
+    MOV r0, #0
+    CMP r12, #0
+    BNE mul_has_ovf
+    CMP r2, #0
+    BGE mul_done
+mul_has_ovf:
+    MOV r0, #1
+mul_done:
+    MOV r10, r2
+    PUSH {r10}
+    BX lr
+
+div_func:
+    @ Iterative subtraction algorithm returning Quotient (r10) & Remainder (r11)
+    POP {r10, r11}
+    MOV r12, #0
+div_subtract_loop:
+    CMP r10, r11
+    BLT div_loop_end
+    SUB r10, r10, r11
+    ADD r12, r12, #1
+    B div_subtract_loop
+div_loop_end:
+    MOV r11, r10
+    MOV r10, r12
+    PUSH {r10, r11}
+    BX lr`
+        },
+        'web-a11y': {
+          title: 'WCAG 2.1 AA Web Accessibility Engine (CSS3 Variables + ES6 JS)',
+          desc: 'How this portfolio implements high-contrast theming, dynamic typography scaling, and screen-reader live regions.',
+          code:
+`/* CSS3 Semantic Custom Properties with High-Contrast Override */
+body.high-contrast {
+  --bg-primary: #000000;
+  --bg-card: #0a0a0a;
+  --text-primary: #FFFF00;   /* High-luminance yellow on pure black (19.6:1 contrast) */
+  --text-secondary: #FFFFFF; /* 21:1 contrast ratio */
+  --link-color: #00FFFF;     /* Cyan hyperlink contrast */
+  --border-color: #FFFFFF;
+  --border-width: 2px;
+}
+
+// ARIA Live Region Announcer for Screen Readers (NVDA / VoiceOver / JAWS)
+function announce(msg) {
+  const announcer = document.getElementById('sr-announcer');
+  announcer.textContent = '';
+  setTimeout(() => { announcer.textContent = msg; }, 30);
+}`
+        }
+      };
+
+      const modal = document.getElementById('code-modal');
+      const modalTitle = document.getElementById('code-modal-title');
+      const modalDesc = document.getElementById('code-modal-desc');
+      const modalPre = document.getElementById('code-modal-pre');
+      const modalClose = document.getElementById('code-modal-close');
+
+      document.querySelectorAll('.open-code-modal-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const key = btn.getAttribute('data-snippet');
+          const item = SNIPPETS[key];
+          if (item) {
+            modalTitle.textContent = item.title;
+            modalDesc.textContent = item.desc;
+            modalPre.textContent = item.code;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            modalClose.focus();
+          }
+        });
+      });
+
+      function closeCodeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+      modalClose.addEventListener('click', closeCodeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeCodeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeCodeModal();
+        }
+      });
+
+      // Clipboard Copy with fallback
+      const copyToast = document.getElementById('copy-toast');
+      document.querySelectorAll('.copy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const text = btn.getAttribute('data-copy') || '';
+          function showCopied() {
+            copyToast.textContent = 'Copied "' + text + '" to clipboard!';
+            copyToast.classList.remove('hidden');
+            announce('Copied ' + text + ' to clipboard');
+            setTimeout(function() { copyToast.classList.add('hidden'); }, 3000);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(showCopied).catch(function() {
+              fallbackCopy(text, showCopied);
+            });
+          } else {
+            fallbackCopy(text, showCopied);
+          }
+        });
+      });
+
+      function fallbackCopy(text, cb) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        cb();
+      }
+    })();
+  </script>
+</body>
+</html>
