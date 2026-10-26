@@ -1,12 +1,12 @@
-# 32-bit ARMv4 Assembly Systems Suite & Accessible Reference (CS 413)
+# 32-bit ARMv4 Assembly Systems Suite (CS 413)
 
 **Course:** CS 413 — Introduction to Digital Computer Architecture (University of Alabama in Huntsville, Fall 2026)  
 **Author:** Emma Planson (`@plansonec`)  
-**Tech Stack:** 32-bit ARMv4 Assembly (`.s`), GNU Assembler (`as`), GCC Linker (`gcc`), GDB Debugger, AAPCS Stack Conventions, Accessible Technical Documentation
+**Tech Stack:** 32-bit ARMv4 Assembly (`.s`), GNU Assembler (`as`), GCC Linker (`gcc`), GDB Debugger, AAPCS Stack Conventions
 
 ## Executive Overview
 
-This directory contains 32-bit ARM Assembly systems programs and an accessible architectural reference guide developed for **CS 413 (Intro to Digital Computer Architecture)** at UAH. The coursework demonstrates low-level hardware stack management, register isolation across subroutines, software-implemented integer division, 64-bit arithmetic overflow traps, finite-state machine (FSM) control flow, and screen-reader accessible documentation.
+This directory contains 32-bit ARMv4 Assembly systems programs developed for **CS 413 (Intro to Digital Computer Architecture)** at UAH. The coursework demonstrates low-level hardware stack management, caller/callee register isolation across subroutines, software-implemented integer division, 64-bit arithmetic overflow traps, and embedded finite-state machine (FSM) control flow.
 
 ## Directory Contents
 
@@ -14,7 +14,6 @@ This directory contains 32-bit ARM Assembly systems programs and an accessible a
 | :--- | :--- | :--- |
 | `lab2_stack_calculator/lab2.s` | **Lab 2: Stack-Based Four-Function Calculator** | Passes operands and return values exclusively via the hardware stack (`PUSH`/`POP`), enforces strict caller/callee register isolation (`r4`/`r5` vs. `r10`/`r11`), implements division via repeated subtraction (`div_func`), and traps 32-bit signed addition/multiplication overflows (`ADDS`/`BVC` and 64-bit `SMULL`). |
 | `lab3_coffee_maker_fsm/lab3.s` | **Lab 3: Coffee Maker Finite State Machine (Keurig Simulator)** | Models an embedded appliance controller tracking a `48 oz` water reservoir (`.word 48`) and cup-size counters (`Small 6 oz`, `Medium 8 oz`, `Large 10 oz`), with character stream flushing (`flush_input`), hidden diagnostic telemetry (`H`/`h` -> `show_hidden`), and automatic low-water shutdown (`< 6 oz`). |
-| `reference/ARM_Assembly_Reference_Card_Accessible.md` | **Accessible ARMv4 Reference Card** | A screen-reader accessible, semantic Markdown transcription of the 32-bit ARMv4 reference card, expanding every instruction mnemonic, condition code (`CPSR`), addressing mode, and barrel shifter operation with explicit table headers for NVDA, JAWS, and VoiceOver users. |
 | `Makefile` | **Build Automation** | Assembles and links `lab2` and `lab3` with non-executable stack protection (`-z noexecstack`). |
 
 ## Deep Dive: Program Architectures

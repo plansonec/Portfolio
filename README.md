@@ -1,7 +1,7 @@
 # Emma Planson — Software Engineering & Accessibility Portfolio
 
 **Computer Science (B.S.) & User Experience (Minor) • University of Alabama in Huntsville (UAH)**  
-**GitHub:** [@plansonec](https://github.com/plansonec) • **Email:** [Emmaplanson@gmail.com](mailto:Emmaplanson@gmail.com) • **Location:** Huntsville & Birmingham, AL
+**GitHub:** [@plansonec](https://www.google.com/search?q=https://github.com/plansonec) • **Email:** [Emmaplanson@gmail.com](mailto:Emmaplanson@gmail.com) • **Location:** Huntsville & Birmingham, AL
 
 ## About Me
 
@@ -13,10 +13,10 @@ This repository houses my core software engineering projects across **Java (Java
 
 | Project Directory | Primary Stack | Core Architecture & Engineering Highlights |
 | :--- | :--- | :--- |
-| [**`/board-game-database-java`**](./board-game-database-java/) | **Java 21, JavaFX, XML (DOM), CSS, Gradle** | Desktop application built on the **MVC** and **Singleton** patterns that parses a 90-game BoardGameGeek XML catalog (`bgg90Games.xml`), supports multi-criteria search and persistent XML wishlists, and features a custom **High-Contrast Accessibility Theme (`highContrast.css`)** and dynamic typography scaling engine (`Session.java`). |
-| [**`/cpu-scheduler-cpp`**](./cpu-scheduler-cpp/) | **C++17, Templates, Custom Iterators, Make** | Discrete-event **CPU Process Scheduler Simulator (`schedulesim`)** comparing **Round Robin (`ArrayList`)**, **Fast Round Robin (`LinkedList`)**, and **Completely Fair Scheduler (`BSTMultimap`)** across CPU-bound and I/O-bound workloads. Includes 5 automated unit test suites and nanosecond-resolution `std::chrono` benchmarks. |
-| [**`/arm-assembly-cs413`**](./arm-assembly-cs413/) | **32-bit ARMv4 Assembly (`.s`), GCC, GDB** | Low-level systems programs from CS 413: a **Stack-Based Four-Function Calculator (`lab2.s`)** featuring strict register isolation (`r4`–`r5` vs. `r10`–`r11`), repeated-subtraction division, and 64-bit `SMULL`/`ADDS` overflow detection; a **Coffee Maker Finite State Machine (`lab3.s`)**; and a **Screen-Reader Accessible ARMv4 Reference Card**. |
-| [**`index.html` / `/docs`**](./docs/) | **HTML5, CSS3, Vanilla ES6 JavaScript** | Zero-dependency, **WCAG 2.1 AA accessible interactive web portfolio** featuring a live client-side JavaScript port of the BoardGameGeek XML search engine, an interactive CPU Scheduler benchmark visualizer, an ARMv4 instruction & lab simulator, and a persistent High-Contrast Mode & font-scaling toolbar. |
+| [/board-game-database-java](https://www.google.com/search?q=./board-game-database-java/) | **Java 21, JavaFX, XML (DOM), CSS, Gradle** | Desktop application built on the **MVC** and **Singleton** patterns that parses a 90-game BoardGameGeek XML catalog (`bgg90Games.xml`), supports multi-criteria search and persistent XML wishlists, and features a custom **High-Contrast Accessibility Theme (`highContrast.css`)** and dynamic typography scaling engine (`Session.java`). |
+| [/cpu-scheduler-cpp](https://www.google.com/search?q=./cpu-scheduler-cpp/) | **C++17, Templates, Custom Iterators, Make** | Discrete-event **CPU Process Scheduler Simulator (`schedulesim`)** comparing **Round Robin (`ArrayList`)**, **Fast Round Robin (`LinkedList`)**, and **Completely Fair Scheduler (`BSTMultimap`)** across CPU-bound and I/O-bound workloads. Includes 5 automated unit test suites and nanosecond-resolution `std::chrono` benchmarks. |
+| [/arm-assembly-cs413](https://www.google.com/search?q=./arm-assembly-cs413/) | **32-bit ARMv4 Assembly (`.s`), GCC, GDB** | Low-level systems programs from CS 413: a **Stack-Based Four-Function Calculator (`lab2.s`)** featuring strict caller/callee register isolation (`r4`–`r5` vs. `r10`–`r11`), repeated-subtraction division, and 64-bit `SMULL`/`ADDS` overflow detection; and an embedded **Coffee Maker Finite State Machine (`lab3.s`)** with 8-byte AAPCS stack-aligned telemetry (`show_hidden`) and automatic low-water shutdown. |
+| [docs/index.html](https://www.google.com/search?q=./docs/) | **HTML5, CSS3, Vanilla ES6 JavaScript** | Zero-dependency, **WCAG 2.1 AA accessible interactive web portfolio** featuring a live client-side JavaScript port of the BoardGameGeek XML search engine, an interactive CPU Scheduler benchmark visualizer, an ARMv4 lab simulator & subroutine architecture explorer, and a persistent High-Contrast Mode & font-scaling toolbar. |
 
 ## Technical Skills Matrix
 
@@ -30,7 +30,7 @@ This repository houses my core software engineering projects across **Java (Java
 ## Quick-Start Guide for Reviewers
 
 ### 1. Launch the Interactive Web Portfolio (HTML5 / CSS3 / JS)
-Open `index.html` (or `docs/index.html`) directly in any modern browser, or visit the live GitHub Pages deployment once hosted. It requires zero build steps or external server dependencies and lets you interactively test the Board Game XML catalog filter, the C++ CPU Scheduler benchmark visualizer, and the ARMv4 Assembly calculator/FSM simulator.
+Open `docs/index.html` (or `index.html`) directly in any modern browser, or visit the live GitHub Pages deployment once hosted. It requires zero build steps or external server dependencies and lets you interactively test the Board Game XML catalog filter, the C++ CPU Scheduler benchmark visualizer, and the ARMv4 Assembly calculator and coffee maker FSM simulators.
 
 ### 2. Build & Test the C++17 CPU Process Scheduler (`cpu-scheduler-cpp/`)
 ```bash
@@ -59,4 +59,4 @@ make all
 
 - **Email:** [Emmaplanson@gmail.com](mailto:Emmaplanson@gmail.com)
 - **Academic Email:** [ecp0018@uah.edu](mailto:ecp0018@uah.edu)
-- **GitHub:** [github.com/plansonec](https://github.com/plansonec)
+- **GitHub:** [github.com/plansonec](https://www.google.com/search?q=https://github.com/plansonec)
